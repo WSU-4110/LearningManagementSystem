@@ -9,7 +9,7 @@ router.route('/').get(async (req, res) => {
     }
 });
 router.route('/add').post((req, res) => {
-    const name = req.body.name; // fyi: app must use(express.json()) to read like this 
+    const name = req.body.name; // fyi: app must use(express.json()) to read like this
     const newStudent = Student({ name });
     newStudent.save()
         .then(() => res.json('student added!'))
