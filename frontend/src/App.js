@@ -5,7 +5,7 @@ import Navbar from './components/navbar.component';
 import Dashboard from './components/dashboard.component';
 import Course from './components/course.component';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Signin from './signin.js';
+import Signin from './components/signin.component';
 
 function App() 
 {
