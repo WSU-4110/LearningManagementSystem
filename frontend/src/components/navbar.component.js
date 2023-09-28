@@ -11,6 +11,10 @@ export default function Navbar() {
                     <li>
                         <Link to="/course">course</Link>
                     </li>
+                    <li>
+                    <Link to="/signin">signin</Link>
+
+                    </li>
                 </ul>
             </div>
         </nav>
