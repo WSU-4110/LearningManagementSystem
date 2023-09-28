@@ -1,4 +1,5 @@
 import '../Signin.css';
+import axios from 'axios'
 
 import React, { useState } from 'react';
 
@@ -12,6 +13,11 @@ function Signin()
   const handleSignin = () => 
   {
     console.log('Signing in with email:', email);
+    const student = {
+      email: email,
+      password: password
+    };
+    axios.post('http://localhost:5050/students/add', student);
   };
 
   return (
