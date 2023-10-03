@@ -1,8 +1,11 @@
 We are aiming to develop a learning mangement system, that allows....
 
 #Members:
-1. David Bogosian
-2. 
+1. David Pogosian ()
+2. Kidd Chang ()
+3. Jacob Rule ()
+4. Rei Pullum ()
+5. Het Patel ()
 
 
 # Getting Started with Create React App
