@@ -1,3 +1,10 @@
+We are aiming to develop a learning mangement system, that allows....
+
+#Members:
+1. David Bogosian
+2. 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
