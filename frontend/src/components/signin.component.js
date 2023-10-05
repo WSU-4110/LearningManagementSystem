@@ -17,7 +17,8 @@ function Signin()
       email: email,
       password: password
     };
-    axios.post('http://localhost:5050/students/add', student);
+    axios.post('http://localhost:5050/students/add', student)
+      .catch((err) => console.log(err));
   };
 
   return (
