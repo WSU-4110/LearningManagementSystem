@@ -12,15 +12,15 @@ router.route('/').get(async (req, res) => {
 router.route('/add').post((req, res) => {
     const email = req.body.email; // fyi: app must use(express.json()) to read like this
     const password = req.body.password;
-    scrypt(password, randomBytes(128), 256, (err, derivedKey) => {
-        console.log(`${derivedKey}`);
+    const salt = randomBytes(128);
+    scrypt(password, salt, 256, (err, derivedKey) => {
+        if (err) throw err;
         const hash = derivedKey.toString('base64');
-        console.log(`hash: ${hash}`);
-        const newStudent = Student({ email: email, password: hash });
-        console.log(`${newStudent}`);
+        const stringSalt = salt.toString('base64');
+        const newStudent = Student({ email: email, password: hash, salt: stringSalt });
         newStudent.save()
             .then(() => res.json('student added!'))
             .catch(err => res.status(400).json('error: ' + err));
-    });
+    })
 });
 module.exports = router;
