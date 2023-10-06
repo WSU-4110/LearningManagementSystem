@@ -11,11 +11,10 @@ mongoose.connect(atlasURI, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
     console.log('atlas connected');
 });
-const studentRouter = require('./routes/students');
-app.use('/students', studentRouter);
-app.route('/').get((req, res) => {
-    res.json('welcome!')
-});
+const studentsRouter = require('./routes/students');
+const coursesRouter = require('./routes/courses');
+app.use('/students', studentsRouter);
+app.use('/courses', coursesRouter)
 app.listen(port, () => {
     console.log(`server running on port ${port}`);
 });
