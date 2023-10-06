@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { scrypt, randomBytes } = require('crypto');
-let Student = require('../models/student.model')
+let Student = require('../models/student.model');
 router.route('/').get(async (req, res) => {
     try {
         let students = await Student.find();
@@ -34,12 +34,29 @@ router.route('/signin').post((req, res) => {
                 if (err) throw err;
                 const hash = derivedKey.toString('base64');
                 if (student.password === hash) {
-                    res.send(true);
+                    res.send(student._id);
                 } else {
-                    res.send(false);
+                    res.send(null);
                 }
             });
-        })
+        });
         //.catch(err => { res.status(400).json('error: ' + err); });
+});
+router.route('/addCourse').post((req, res) => {
+    const studentId = req.body.studentId;
+    const courseId = req.body.courseId;
+    Student.findById(studentId)
+        .then(student => { 
+            student.courses.push(courseId);
+            student.save();
+            res.json('course added to student');
+        })
+        .catch(err => res.status(400).json('error: ' + err));
+});
+router.route('/getCourses/:id').get((req, res) => {
+    const studentId = req.params.id;
+    Student.findById(studentId)
+        .then(student => { res.json(student.courses); })
+        .catch(err => res.status(400).json('error: ' + err));
 });
 module.exports = router;

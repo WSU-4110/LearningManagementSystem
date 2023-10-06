@@ -14,7 +14,7 @@ export default function App() {
                 <Route path = '/course' element={<Course/>} />
                 <Route path = '/signin' element={<Signin/>} />
                 <Route path = '/register' element={<Register/>} />
-                <Route path = '/dashboard' element={<Dashboard/>} />
+                <Route path = '/dashboard/:id' element={<Dashboard/>} />
                 <Route path = '/assignment' element={<Assignment/>} />
             </Routes>
         </Router>

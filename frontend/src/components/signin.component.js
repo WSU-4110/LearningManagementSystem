@@ -1,7 +1,9 @@
+//import { Navigate, useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import '../Signin.css';
 export default function Signin() {
+    //const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     function handleSignin() {
@@ -13,7 +15,9 @@ export default function Signin() {
             .then(res => {
                 if (res.data) {
                     console.log('valid password');
-                    window.location = '/dashboard';
+                    //navigate('/dashboard:' + res.data);
+
+                    window.location = `/dashboard/${res.data}`;
                 } else {
                     console.log('invalid password');
                 }
