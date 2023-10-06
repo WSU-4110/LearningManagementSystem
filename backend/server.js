@@ -14,7 +14,7 @@ mongoose.connection.once('open', () => {
 const studentsRouter = require('./routes/students');
 const coursesRouter = require('./routes/courses');
 app.use('/students', studentsRouter);
-app.use('/courses', coursesRouter)
+app.use('/courses', coursesRouter);
 app.listen(port, () => {
     console.log(`server running on port ${port}`);
 });
