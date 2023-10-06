@@ -21,6 +21,25 @@ router.route('/add').post((req, res) => {
         newStudent.save()
             .then(() => res.json('student added!'))
             .catch(err => res.status(400).json('error: ' + err));
-    })
+    });
+});
+router.route('/signin').post((req, res) => {
+    Student.findOne({ email: req.body.email })
+        .then(student => {
+            if (student === null) {
+                res.status(400).json(`student with email: ${req.body.email} not found`);
+                return; // this seems weird
+            }
+            scrypt(req.body.password, Buffer.from(student.salt, 'base64'), 256, (err, derivedKey) => {
+                if (err) throw err;
+                const hash = derivedKey.toString('base64');
+                if (student.password === hash) {
+                    res.send(true);
+                } else {
+                    res.send(false);
+                }
+            });
+        })
+        //.catch(err => { res.status(400).json('error: ' + err); });
 });
 module.exports = router;

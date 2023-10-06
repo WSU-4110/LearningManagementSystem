@@ -22,7 +22,7 @@ router.route('/addStudent').post((req, res) => {
         .then(course => { 
             course.students.push(newStudentId);
             course.save();
-            res.json('student added to course')
+            res.json('student added to course');
         })
         .catch(err => res.status(400).json('error: ' + err));
 });
@@ -33,7 +33,7 @@ router.route('/deleteStudent').delete((req, res) => {
         .then((course) => {
             course.students.remove(studentId);
             course.save();
-            res.json('student deleted from coruse')
+            res.json('student deleted from course');
         })
         .catch(err => res.status(400).json('error: ' + err));
 });
