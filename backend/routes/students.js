@@ -15,4 +15,7 @@ router.route('/add').post((req, res) => {
         .then(() => res.json('student added!'))
         .catch(err => res.status(400).json('error: ' + err));
 });
+
+router.route('/profilepage').post(protect,updateUserProfile)
+
 module.exports = router;
