@@ -23,40 +23,42 @@ router.route('/add').post((req, res) => {
             .catch(err => res.status(400).json('error: ' + err));
     });
 });
-router.route('/signin').post((req, res) => {
-    Student.findOne({ email: req.body.email })
-        .then(student => {
-            if (student === null) {
-                res.status(400).json(`student with email: ${req.body.email} not found`);
-                return; // this seems weird
+router.route('/signin').post(async (req, res) => {
+    try {
+        const student = await Student.findOne({ email: req.body.email })
+        if (student === null) {
+            res.status(400).json(`student with email: ${req.body.email} not found`);
+            return; // this seems weird
+        }
+        scrypt(req.body.password, Buffer.from(student.salt, 'base64'), 256, (err, derivedKey) => {
+            if (err) throw err;
+            const hash = derivedKey.toString('base64');
+            if (student.password === hash) {
+                res.send(student._id);
+            } else {
+                res.send(null);
             }
-            scrypt(req.body.password, Buffer.from(student.salt, 'base64'), 256, (err, derivedKey) => {
-                if (err) throw err;
-                const hash = derivedKey.toString('base64');
-                if (student.password === hash) {
-                    res.send(student._id);
-                } else {
-                    res.send(null);
-                }
-            });
         });
-        //.catch(err => { res.status(400).json('error: ' + err); });
+    } catch(err) {
+        res.status(400).json('error: ' + err);
+    }
 });
-router.route('/addCourse').post((req, res) => {
-    const studentId = req.body.studentId;
-    const courseId = req.body.courseId;
-    Student.findById(studentId)
-        .then(student => { 
-            student.courses.push(courseId);
-            student.save();
-            res.json('course added to student');
-        })
-        .catch(err => res.status(400).json('error: ' + err));
+router.route('/addCourse').post(async (req, res) => {
+    try {
+        const student = await Student.findById(req.body.studentId);
+        student.courses.push(req.body.courseId);
+        student.save();
+        res.json('course added to student');
+    } catch(err) {
+        res.status(400).json('error: ' + err);
+    }
 });
-router.route('/getCourses/:id').get((req, res) => {
-    const studentId = req.params.id;
-    Student.findById(studentId)
-        .then(student => { res.json(student.courses); })
-        .catch(err => res.status(400).json('error: ' + err));
+router.route('/getCourses/:id').get(async (req, res) => {
+    try {
+        const student = await Student.findById(req.params.id);
+        res.json(student.courses);
+    } catch(err) {
+        res.status(400).json('error: ' + err);
+    }
 });
 module.exports = router;

@@ -8,33 +8,32 @@ router.route('/').get(async (req, res) => {
         res.status(400).json('error: ' + err);
     }
 });
-router.route('/add').post((req, res) => {
-    const name = req.body.name;
-    const newCourse = Course({ name: name });
-    newCourse.save()
-        .then(() => res.json('course added!'))
-        .catch(err => res.status(400).json('error: ' + err));
+router.route('/add').post(async (req, res) => {
+    try {
+        await Course({ name: req.body.name }).save();
+        res.json('course added!');
+    } catch(err) {
+        res.status(400).json('error: ' + err)
+    }
 });
-router.route('/addStudent').post((req, res) => {
-    const newStudentId = req.body.newStudentId;
-    const courseId = req.body.courseId;
-    Course.findById(courseId)
-        .then(course => { 
-            course.students.push(newStudentId);
-            course.save();
-            res.json('student added to course');
-        })
-        .catch(err => res.status(400).json('error: ' + err));
+router.route('/addStudent').post( async (req, res) => {
+    try {
+        const course = await Course.findById(req.body.courseId);
+        course.students.push(req.body.newStudentId);
+        course.save();
+        res.json('student added to course');
+    } catch(err) {
+        res.status(400).json('error: ' + err);
+    }
 });
-router.route('/deleteStudent').delete((req, res) => {
-    const studentId = req.body.studentId;
-    const courseId = req.body.courseId;
-    Course.findById(courseId)
-        .then((course) => {
-            course.students.remove(studentId);
-            course.save();
-            res.json('student deleted from course');
-        })
-        .catch(err => res.status(400).json('error: ' + err));
+router.route('/deleteStudent').delete( async (req, res) => {
+    try {
+        const course = await Course.findById(req.body.courseId);
+        course.students.remove(req.body.studentId);
+        course.save();
+        res.json('student deleted from course');
+    } catch(err) {
+        res.status(400).json('error: ' + err);
+    }
 });
 module.exports = router;
