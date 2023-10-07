@@ -1,7 +1,6 @@
-//import { Navigate, useNavigate } from "react-router-dom";
+import '../css/Signin.css';
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../Signin.css';
 export default function Signin() {
     //const navigate = useNavigate();
     const [email, setEmail] = useState('');

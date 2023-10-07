@@ -34,3 +34,7 @@ body {
 .nav-links a:hover {
     border-bottom: 2px solid #fff;
 }
+
+.profile {
+    float: right;
+}
