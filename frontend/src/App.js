@@ -1,27 +1,22 @@
-import './App.css';
-
-
-import Navbar from './components/navbar.component';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+//import Navbar from './components/navbar.component';
 import Dashboard from './components/dashboard.component';
 import Course from './components/course.component';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Signin from './components/signin.component';
-
-function App() 
-{
-  return (
-    
-
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path = '/' element={<Dashboard/>} />
-        <Route path = '/course' element={<Course/>} />
-        <Route path = '/signin' element={<Signin/>} />
-
-      </Routes>
-    </Router>
-  );
-}
-
-export default App;
+import Assignment from './components/assignment.component';
+import Register from './components/register.component';
+import './App.css';
+export default function App() {
+    return (
+        <Router>
+            <Routes>
+                <Route path = '/' element={<Dashboard/>} />
+                <Route path = '/course' element={<Course/>} />
+                <Route path = '/signin' element={<Signin/>} />
+                <Route path = '/register' element={<Register/>} />
+                <Route path = '/dashboard/:id' element={<Dashboard/>} />
+                <Route path = '/assignment' element={<Assignment/>} />
+            </Routes>
+        </Router>
+    );
+};
