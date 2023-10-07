@@ -1,6 +1,9 @@
-export default function Course() 
-{
+import { Link } from 'react-router-dom';
+export default function Course() {
     return(
-        <p>this is a course</p>
+        <div>
+            <p>this is a course</p>
+            <Link to="/assignment">assignment</Link>
+        </div>
     );
 }

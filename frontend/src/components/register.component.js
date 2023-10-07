@@ -1,31 +1,20 @@
-import '../css/Signin.css';
 import React, { useState } from 'react';
 import axios from 'axios';
-export default function Signin() {
-    //const navigate = useNavigate();
+export default function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    function handleSignin() {
+    function handleRegister() {
         const student = {
             email: email,
             password: password
         };
-        axios.post('http://localhost:5050/students/signin', student)
-            .then(res => {
-                if (res.data) {
-                    console.log('valid password');
-                    //navigate('/dashboard:' + res.data);
-
-                    window.location = `/dashboard/${res.data}`;
-                } else {
-                    console.log('invalid password');
-                }
-            })
-            .catch(err => { console.log(err) });
+        axios.post('http://localhost:5050/students/add', student)
+            .catch((err) => console.log(err));
+        window.location = '/signin';
     };
     return (
         <div>
-        <h1>Sign In</h1>
+            <h1>Register</h1>
             <form>
                 <div>
                     <label>Email:</label>
@@ -43,8 +32,8 @@ export default function Signin() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <button type="button" onClick={handleSignin}>
-                Sign In
+                <button type="button" onClick={handleRegister}>
+                    register
                 </button>
             </form>
         </div>
