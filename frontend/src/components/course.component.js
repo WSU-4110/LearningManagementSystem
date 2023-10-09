@@ -1,8 +1,12 @@
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import React, {useState, useEffect} from 'react'
 export default function Course() {
-
-    {/*courseTextDisplay is used to change the font for the header "Courses"*/}
+    const { id } = useParams();
+    return(
+        <div>
+            <p>this is course {id}</p>
+    /*
     const courseTextDisplay = 
     {
         color: '#F67280',
@@ -23,7 +27,6 @@ export default function Course() {
             <h1 style={courseTextDisplay}>Courses</h1>
             <ul>
 
-            {/*To be continued by Rei to print actual students courses*/}
             {courses.map((course) => 
                 (
                     <li key={course._id}>{course.name}</li>
@@ -33,6 +36,7 @@ export default function Course() {
                 <li><Link to="/course">course3</Link></li>
             </ul>
             <Link to="/assignment">assignment</Link>
+  */
         </div>
     );
 }
