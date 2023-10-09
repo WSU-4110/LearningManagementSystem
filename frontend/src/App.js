@@ -12,8 +12,6 @@ import ProfilePage from './components/profilePage.component';
 
 export default function App() {
   return (
-    
-
     <Router>
       <Routes>
         <Route path = '/' element={<Dashboard/>} />
@@ -21,7 +19,7 @@ export default function App() {
         <Route path = '/signin' element={<Signin/>} />
         <Route path = '/register' element={<Register/>} />
         <Route path = '/dashboard/:id' element={<Dashboard/>} />
-        <Route path = '/assignment' element={<Assignment/>} />
+        <Route path = '/assignment/:id' element={<Assignment/>} />
         <Route path = '/profilepage' element={<ProfilePage/>} />
       </Routes>
     </Router>

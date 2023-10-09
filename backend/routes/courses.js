@@ -1,5 +1,6 @@
 const router = require('express').Router();
-let Course = require('../models/course.model')
+let Course = require('../models/course.model');
+const Assignment = require('../models/assignment.model');
 router.route('/').get(async (req, res) => {
     try {
         let courses = await Course.find();
@@ -16,6 +17,16 @@ router.route('/:id').get(async (req, res) => {
         res.status(400).json('error: ' + err);
     }
 });
+router.route('/addAssignment/:id').patch(async (req, res) => {
+    try {
+        const course = await Course.findById(req.params.id);
+        course.assignments.push(Assignment(req.body.assignment));
+        await course.save();
+        res.json('assignment added!');
+    } catch(err) {
+        res.status(400).json('error: ' + err);
+    }
+});
 router.route('/add').post(async (req, res) => {
     try {
         await Course({ name: req.body.name }).save();
@@ -24,7 +35,7 @@ router.route('/add').post(async (req, res) => {
         res.status(400).json('error: ' + err)
     }
 });
-router.route('/addStudent').post( async (req, res) => {
+router.route('/addStudent').post(async (req, res) => {
     try {
         const course = await Course.findById(req.body.courseId);
         course.students.push(req.body.newStudentId);
@@ -34,7 +45,7 @@ router.route('/addStudent').post( async (req, res) => {
         res.status(400).json('error: ' + err);
     }
 });
-router.route('/deleteStudent').delete( async (req, res) => {
+router.route('/deleteStudent').delete(async (req, res) => {
     try {
         const course = await Course.findById(req.body.courseId);
         course.students.remove(req.body.studentId);

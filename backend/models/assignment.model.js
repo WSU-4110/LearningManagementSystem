@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const assignmentSchema = mongoose.Schema({
     name: String,
-    duaData: Date,
+    duaDate: Date,
     content: String
 });
 const Assignment = mongoose.model('Assignment', assignmentSchema);

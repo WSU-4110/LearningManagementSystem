@@ -5,7 +5,9 @@ import axios from 'axios';
 function CoursePeak(props) {
     return (
         <div>
-            <Link to={"/course/" + props.courseId}><h2>{props.courseName}</h2></Link>
+            <Link to={"/course/" + props.courseId}>
+                <h2>{props.courseName}</h2>
+            </Link>
         </div>
     );
 };
