@@ -10,7 +10,7 @@ function AssignmentPeak(props) {
             </Link>
         </div>
     );
-};
+}
 export default function Course() {
     const { id } = useParams();
     const [assignments, setAssignments] = useState([]);
