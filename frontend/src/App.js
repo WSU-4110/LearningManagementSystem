@@ -17,7 +17,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path = '/' element={<Dashboard/>} />
-        <Route path = '/course' element={<Course/>} />
+        <Route path = '/course/:id' element={<Course/>} />
         <Route path = '/signin' element={<Signin/>} />
         <Route path = '/register' element={<Register/>} />
         <Route path = '/dashboard/:id' element={<Dashboard/>} />

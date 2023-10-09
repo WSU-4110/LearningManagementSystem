@@ -8,6 +8,14 @@ router.route('/').get(async (req, res) => {
         res.status(400).json('error: ' + err);
     }
 });
+router.route('/:id').get(async (req, res) => {
+    try {
+        let course = await Course.findById(req.params.id);
+        res.json(course);
+    } catch(err) {
+        res.status(400).json('error: ' + err);
+    }
+});
 router.route('/add').post(async (req, res) => {
     try {
         await Course({ name: req.body.name }).save();
