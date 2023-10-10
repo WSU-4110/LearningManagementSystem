@@ -11,11 +11,20 @@ export default function Assignment() {
         }
         getAssignment();
     }, []);
+    function handleSubmit() {
+        console.log('thank you for your submission');
+    }
     return (
         <div>
             <h2>{assignment && assignment.name}</h2>
             <p>{assignment && assignment.dueDate}</p>
             <p>{assignment && assignment.content}</p>
+            <form>
+                <input type="file"/>
+                <button type="button" onClick={handleSubmit}>
+                    Submit
+                </button>
+            </form>
         </div>
     );
 }

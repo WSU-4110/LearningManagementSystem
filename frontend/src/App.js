@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import './css/App.css';
 
-//import Navbar from './components/navbar.component';
+import Navbar from './components/navbar.component';
 import Dashboard from './components/dashboard.component';
 import Course from './components/course.component';
 import Signin from './components/signin.component';
@@ -13,6 +13,7 @@ import ProfilePage from './components/profilePage.component';
 export default function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
         <Route path = '/' element={<Dashboard/>} />
         <Route path = '/course/:id' element={<Course/>} />
