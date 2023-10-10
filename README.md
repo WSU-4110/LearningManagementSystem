@@ -1,3 +1,14 @@
+We are aiming to develop a learning mangement system, that allows....
+
+#Members:
+1. David Pogosian (https://github.com/davidpogosian)
+2. Kidd Chang (https://github.com/101kiddchang010)
+3. Jacob Rule (https://github.com/jrule5960)
+4. Rei Pullum (https://github.com/reipullum)
+5. Het Patel (https://github.com/hetpatel66)
+6. Adam Ahmed (https://github.com/aahmed33)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
