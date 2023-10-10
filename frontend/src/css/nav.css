@@ -1,0 +1,40 @@
+.navbar {
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px 20px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100; 
+}
+
+body {
+    padding-top: 60px; 
+}
+
+.nav-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-links a:hover {
+    border-bottom: 2px solid #fff;
+}
+
+.profile {
+    float: right;
+}
