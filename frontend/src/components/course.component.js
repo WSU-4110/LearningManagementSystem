@@ -17,8 +17,15 @@ export default function Course() {
     useEffect(() => {
         async function getAssignments() {
             try {
-                const course = await axios.get('http://localhost:5050/courses/' + id);
-                setAssignments(course.data.assignments);
+                let assignmentList = [];
+                const response = await axios.get('http://localhost:5050/courses/' + id);
+                const course = response.data;
+                const assignmentIds = course.assignments;
+                for (let i = 0; i < Object.values(assignmentIds).length; i++) {
+                    const assignment = await axios.get('http://localhost:5050/assignments/' + assignmentIds[i]);
+                    assignmentList.push(assignment.data);
+                }
+                setAssignments(assignmentList);
             } catch(err) {
                 console.log('error: ' + err);
             }
