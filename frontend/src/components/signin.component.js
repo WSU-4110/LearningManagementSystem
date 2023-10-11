@@ -25,7 +25,7 @@ export default function Signin() {
     };
     return (
         <div>
-        <h1>Sign In</h1>
+        <h1>Login</h1>
             <form>
                 <div>
                     <input
@@ -44,7 +44,7 @@ export default function Signin() {
                     />
                 </div>
                 <button type="button" onClick={handleSignin}>
-                Sign In
+                Login
                 </button>
             </form>
         </div>
