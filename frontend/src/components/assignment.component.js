@@ -21,9 +21,11 @@ export default function Assignment() {
             <p>{assignment && assignment.content}</p>
             <form>
                 <input type="file"/>
-                <button type="button" onClick={handleSubmit}>
-                    Submit
-                </button>
+                <div>
+                    <button className="small-btn" type="button" onClick={handleSubmit}>
+                        Submit
+                    </button>
+                </div>
             </form>
         </div>
     );

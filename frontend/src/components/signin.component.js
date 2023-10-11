@@ -18,7 +18,7 @@ export default function Signin() {
 
                     window.location = `/dashboard/${res.data}`;
                 } else {
-                    console.log('invalid password');
+                    console.log('invalid password'); // make visible
                 }
             })
             .catch(err => { console.log(err) });
@@ -35,7 +35,7 @@ export default function Signin() {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
-                <div>
+                <div>   
                     <label>Password:</label>
                     <input
                         type="password"
