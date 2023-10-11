@@ -18,7 +18,7 @@ export default function Signin() {
 
                     window.location = `/dashboard/${res.data}`;
                 } else {
-                    console.log('invalid password'); // make visible
+                    alert('Invalid password'); // make visible
                 }
             })
             .catch(err => { console.log(err) });
