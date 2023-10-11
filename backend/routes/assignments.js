@@ -10,7 +10,7 @@ router.route('/:id').get(async (req, res) => {
 });
 router.route('/add').post(async (req, res) => {
     try {
-        await Assignment({ 
+        await Assignment({
             name: req.body.name,
             dueDate: req.body.dueDate,
             content: req.body.content
@@ -19,5 +19,5 @@ router.route('/add').post(async (req, res) => {
     } catch(err) {
         res.status(400).json('error: ' + err)
     }
-}); 
+});
 module.exports = router;

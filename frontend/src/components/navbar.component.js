@@ -15,10 +15,13 @@ export default function Navbar() {
                     </li>
                     <li>
                         <Link to="/signin">Sign-In</Link>
-                    </li>                    
+                    </li>
+                    <li>
+                        <Link to="/register">Register</Link>
+                    </li>                 
                     <li>
                         <Link to="/profilepage">Profile</Link>
-                    </li>
+                    </li> 
                 </ul>
             </div>
         </nav>
