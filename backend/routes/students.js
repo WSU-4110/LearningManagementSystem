@@ -62,6 +62,5 @@ router.route('/getCourses/:id').get(async (req, res) => {
     }
 });
 
-router.route('/profilepage').post(protect,updateUserProfile)
 
 module.exports = router;

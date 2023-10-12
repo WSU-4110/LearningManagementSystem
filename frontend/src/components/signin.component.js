@@ -2,9 +2,12 @@ import '../css/Signin.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 export default function Signin() {
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    
+    
+    
     function handleSignin() {
         const student = {
             email: email,
@@ -14,7 +17,7 @@ export default function Signin() {
             .then(res => {
                 if (res.data) {
                     console.log('valid password');
-                    //navigate('/dashboard:' + res.data);
+                    navigate('/dashboard:' + res.data);
 
                     window.location = `/dashboard/${res.data}`;
                 } else {

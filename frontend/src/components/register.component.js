@@ -12,6 +12,7 @@ export default function Register() {
             .catch((err) => console.log(err));
         window.location = '/signin';
     };
+    
     return (
         <div>
             <h1>Register</h1>

@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import './css/App.css';
 
-//import Navbar from './components/navbar.component';
+import Navbar from './components/navbar.component';
 import Dashboard from './components/dashboard.component';
 import Course from './components/course.component';
 import Signin from './components/signin.component';
@@ -16,6 +16,7 @@ export default function App() {
 
     <Router>
       <Routes>
+      
         <Route path = '/' element={<Dashboard/>} />
         <Route path = '/course' element={<Course/>} />
         <Route path = '/signin' element={<Signin/>} />
