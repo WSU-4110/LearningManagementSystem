@@ -1,7 +1,7 @@
 import '../css/Signin.css';
 import React, { useState } from 'react';
 import axios from 'axios';
-export default function Signin() {
+export default function Login() {
     //const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
