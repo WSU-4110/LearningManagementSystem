@@ -12,17 +12,16 @@ import ProfilePage from './components/profilePage.component';
 
 export default function App() {
   return (
-    
-
     <Router>
+      <Navbar />
       <Routes>
       
         <Route path = '/' element={<Dashboard/>} />
-        <Route path = '/course' element={<Course/>} />
+        <Route path = '/course/:id' element={<Course/>} />
         <Route path = '/signin' element={<Signin/>} />
         <Route path = '/register' element={<Register/>} />
         <Route path = '/dashboard/:id' element={<Dashboard/>} />
-        <Route path = '/assignment' element={<Assignment/>} />
+        <Route path = '/assignment/:id' element={<Assignment/>} />
         <Route path = '/profilepage' element={<ProfilePage/>} />
       </Routes>
     </Router>

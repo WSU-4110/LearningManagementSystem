@@ -1,38 +1,38 @@
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import React, {useState, useEffect} from 'react'
-export default function Course() {
-
-    {/*courseTextDisplay is used to change the font for the header "Courses"*/}
-    const courseTextDisplay = 
-    {
-        color: '#F67280',
-        textDecoration: 'underline',
-    };
-
-    const [courses, setCourses] = useState([]);
-
-    useEffect(() => 
-    {
-        fetch('/courses')
-        .then((response) => response.json())
-        .then((data) => setCourses(data))
-    });
-    
-    return(
+import axios from 'axios';
+function AssignmentPeak(props) {
+    return (
         <div>
-            <h1 style={courseTextDisplay}>Courses</h1>
-            <ul>
-
-            {/*To be continued by Rei to print actual students courses*/}
-            {courses.map((course) => 
-                (
-                    <li key={course._id}>{course.name}</li>
-                ))}
-                <li><Link to="/course">course1</Link></li>
-                <li><Link to="/course">course2</Link></li>
-                <li><Link to="/course">course3</Link></li>
-            </ul>
-            <Link to="/assignment">assignment</Link>
+            <Link to={"/assignment/" + props.assignmentId}>
+                <h2>{props.assignmentName}</h2>
+            </Link>
         </div>
     );
+}
+export default function Course() {
+    const { id } = useParams();
+    const [assignments, setAssignments] = useState([]);
+    useEffect(() => {
+        async function getAssignments() {
+            try {
+                let assignmentList = [];
+                const response = await axios.get('http://localhost:5050/courses/' + id);
+                const course = response.data;
+                const assignmentIds = course.assignments;
+                for (let i = 0; i < Object.values(assignmentIds).length; i++) {
+                    const assignment = await axios.get('http://localhost:5050/assignments/' + assignmentIds[i]);
+                    assignmentList.push(assignment.data);
+                }
+                setAssignments(assignmentList);
+            } catch(err) {
+                console.log('error: ' + err);
+            }
+        }
+        getAssignments();
+    }, []);
+    return assignments.map(assignment => {
+        return <AssignmentPeak assignmentName={assignment.name} assignmentId={assignment._id} key={assignment._id}/>;
+    });
 }

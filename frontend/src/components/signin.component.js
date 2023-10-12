@@ -21,33 +21,33 @@ export default function Signin() {
 
                     window.location = `/dashboard/${res.data}`;
                 } else {
-                    console.log('invalid password');
+                    alert('Invalid password'); // make visible
                 }
             })
             .catch(err => { console.log(err) });
     };
     return (
         <div>
-        <h1>Sign In</h1>
+        <h1>Login</h1>
             <form>
                 <div>
-                    <label>Email:</label>
                     <input
                         type="email"
+                        placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
-                <div>
-                    <label>Password:</label>
+                <div>   
                     <input
                         type="password"
+                        placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
                 <button type="button" onClick={handleSignin}>
-                Sign In
+                Login
                 </button>
             </form>
         </div>
