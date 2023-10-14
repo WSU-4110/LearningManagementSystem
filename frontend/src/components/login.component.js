@@ -19,7 +19,7 @@ export default function Login() {
                     const refreshToken = res.data.refreshToken;
                     localStorage.setItem("accessToken", accessToken);
                     localStorage.setItem("refreshToken", refreshToken);
-                    //window.location = `/dashboard/`;
+                    console.log('valid password');
                     navigate('/dashboard');
                 } else {
                     alert('Invalid password');
