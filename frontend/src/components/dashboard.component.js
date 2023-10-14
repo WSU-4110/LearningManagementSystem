@@ -1,7 +1,6 @@
-import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import http from '../http';
 function CoursePeak(props) {
     return (
         <div>
@@ -12,16 +11,15 @@ function CoursePeak(props) {
     );
 };
 export default function Dashboard() {
-    const { id } = useParams();
     const [courses, setCourses] = useState([]);
     useEffect(() => {
         async function getCourses() {
             try {
                 let courseList = [];
-                const rawCourses = await axios.get('http://localhost:5050/students/getCourses/' + id);
+                const rawCourses = await http.get('http://localhost:5050/students/getCourses/');
                 const courseIds = Object.values(rawCourses.data);
                 for (let i = 0; i < courseIds.length; i++) {
-                    const course = await axios.get('http://localhost:5050/courses/' + courseIds[i]);
+                    const course = await http.get('http://localhost:5050/courses/' + courseIds[i]);
                     courseList.push(course.data);
                 }
                 setCourses(courseList);
