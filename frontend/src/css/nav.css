@@ -3,13 +3,13 @@
     color: #fff; 
     padding: 10px 20px; 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100; 
+    z-index: 100;
 }
 
 body {

@@ -12,48 +12,52 @@ export default function Register() {
             firstName: firstName,
             lastName: lastName
         };
-        axios.post('http://localhost:5050/students/add', student)
+        axios.post('http://localhost:4000/', student)
             .catch((err) => console.log(err));
-        window.location = '/signin';
+        window.location = '/login';
     };
+    
     return (
         <div>
             <h1>Register</h1>
             <form>
                 <div>
-                    <label>Email:</label>
                     <input
                         type="email"
+                        placeholder="Email"
+
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>
-                    <label>Password:</label>
                     <input
                         type="password"
+                        placeholder="Password"
+
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
                 <div>
-                    <label>First Name:</label>
                     <input
                         type="text"
+                        placeholder="First Name"
+
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                     />
                 </div>
                 <div>
-                    <label>Last Name:</label>
                     <input
                         type="text"
+                        placeholder="Last Name"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                     />
                 </div>
                 <button type="button" onClick={handleRegister}>
-                    register
+                    Register
                 </button>
             </form>
         </div>

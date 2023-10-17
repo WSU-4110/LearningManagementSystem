@@ -7,8 +7,8 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    /*background-image: url('background2.jpg');*/
-    background-size:cover;
+    background-image: url('fieldBackground.jpg');
+    background-size: cover;
   }
   
   .container {
@@ -22,7 +22,7 @@ body {
   
   h1 {
     text-align: center;
-    color: #ffffff;
+    color: #000000;
   }
   
   form {
@@ -32,7 +32,7 @@ body {
   
   label {
     margin: 5px 0;
-    color: #ffffff;
+    color: #000000;
   }
   
   input {

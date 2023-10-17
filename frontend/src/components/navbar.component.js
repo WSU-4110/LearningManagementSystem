@@ -14,11 +14,14 @@ export default function Navbar() {
                         <Link to="/course">Course</Link>
                     </li>
                     <li>
-                        <Link to="/signin">Sign-In</Link>
-                    </li>                    
+                        <Link to="/login">Login</Link>
+                    </li>
+                    <li>
+                        <Link to="/register">Register</Link>
+                    </li>                 
                     <li>
                         <Link to="/profilepage">Profile</Link>
-                    </li>
+                    </li> 
                 </ul>
             </div>
         </nav>
