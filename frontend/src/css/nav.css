@@ -1,21 +1,27 @@
+/* nav.css */
+
+/* Navbar styles */
 .navbar {
     background-color: #333; 
     color: #fff; 
     padding: 10px 20px; 
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Center the items horizontally with space in between */
     align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
 }
 
+/* Add space at the top of the body to prevent content from being hidden under the fixed navbar */
 body {
     padding-top: 60px; 
 }
 
+/* Navigation links styles */
 .nav-links ul {
     list-style: none;
     padding: 0;
@@ -29,12 +35,26 @@ body {
 .nav-links a {
     text-decoration: none;
     color: #fff;
+    font-weight: 600; /* Bolder text */
+    transition: border-bottom 0.3s ease; /* Smooth border-bottom transition on hover */
 }
 
 .nav-links a:hover {
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #fff; /* Add an underline on hover */
 }
 
 .profile {
     float: right;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+
+
+@media (max-width: 768px) {
+    .nav-links ul {
+        flex-direction: column; 
+    }
 }
