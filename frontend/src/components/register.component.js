@@ -15,9 +15,9 @@ export default function Register() {
             firstName: firstName,
             lastName: lastName
         };
-        axios.post('http://localhost:5050/students/add', student)
+        axios.post('http://localhost:4000/', student)
             .catch((err) => console.log(err));
-        window.location = '/signin';
+        window.location = '/login';
     };
     
     return (

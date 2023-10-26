@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
 import '../css/profilePage.css';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import http from '../http';
 //let Student = require('..../models/student.model');
 
 
@@ -12,7 +12,7 @@ export default function ProfilePage() {
     useEffect(()=> {  
         // here we get the data by requesting data from this link
         // to our nodejs server
-        axios.get('http://localhost:5050/students/')
+        http.get('http://localhost:5050/students/')
         .then((res)=> setList(res.data));
     }, []);
 

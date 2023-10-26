@@ -1,28 +1,28 @@
 import '../css/Signin.css';
+import { useNavigate} from 'react-router-dom';
 import React, { useState } from 'react';
-import axios from 'axios';
-
-export default function Signin() {
+import http from '../http';
+export default function Login() {
     //const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
-    
-    
+    const navigate = useNavigate();
     function handleSignin() {
         const student = {
             email: email,
             password: password
         };
-        axios.post('http://localhost:5050/students/signin', student)
+        http.post('http://localhost:4000/login', student)
             .then(res => {
                 if (res.data) {
+                    const accessToken = res.data.accessToken;
+                    const refreshToken = res.data.refreshToken;
+                    localStorage.setItem("accessToken", accessToken);
+                    localStorage.setItem("refreshToken", refreshToken);
                     console.log('valid password');
-                  //  navigate('/dashboard:' + res.data);
-
-                    window.location = `/dashboard/${res.data}`;
+                    navigate('/dashboard');
                 } else {
-                    alert('Invalid password'); // make visible
+                    alert('Invalid password');
                 }
             })
             .catch(err => { console.log(err) });

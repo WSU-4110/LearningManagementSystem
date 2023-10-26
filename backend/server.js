@@ -1,11 +1,23 @@
-const express = require('express');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+    if (token == null) return res.sendStatus(401);
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if (err) return res.sendStatus(600);
+        req.user = user;
+        next();
+    });
+}
 const app = express();
 const port = process.env.PORT || 5050;
 app.use(cors());
 app.use(express.json());
+app.use(authenticateToken);
 const atlasURI = process.env.ATLAS_URI;
 mongoose.connect(atlasURI, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {

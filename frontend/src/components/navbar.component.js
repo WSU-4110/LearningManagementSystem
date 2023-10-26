@@ -14,7 +14,7 @@ export default function Navbar() {
                         <Link to="/course">Course</Link>
                     </li>
                     <li>
-                        <Link to="/signin">Sign-In</Link>
+                        <Link to="/login">Login</Link>
                     </li>
                     <li>
                         <Link to="/register">Register</Link>
