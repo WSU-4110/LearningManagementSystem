@@ -32,11 +32,10 @@ app.post('/', async (req, res) => {
         res.status(500).send('error: ' + err);
       }
 });
-let refreshTokens = []
 app.post('/token', async (req, res) => {
-    const refreshToken = req.body.token
+    const refreshToken = req.body.token;
     if (refreshToken == null) return res.sendStatus(401);
-    if (!await RefreshToken.findOne({ token: req.body.token })) return res.sendStatus(403);
+    if (!await RefreshToken.findOne({ token: refreshToken })) return res.sendStatus(403);
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err) return res.sendStatus(403);
         const accessToken = generateAccessToken({ email: user.email, _id: user._id });
