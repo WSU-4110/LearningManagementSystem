@@ -1,0 +1,13 @@
+h3 {
+    background-color: #21aeeb;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  ol {
+    list-style: decimal inside;
+    padding-left: 0;
+    text-align: left;
+  }
