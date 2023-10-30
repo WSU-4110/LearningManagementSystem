@@ -89,3 +89,5 @@ export default function ProfilePage() {
         </div>
     );
 }
+
+//in Singleton Design
