@@ -1,19 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Component } from 'react';
 import { Link } from 'react-router-dom';
 import http from '../http';
-function CoursePeak(props) {
+
+class CoursePeak extends Component {
+    render()
+    {
     return (
         <div>
-            <Link to={"/course/" + props.courseId}>
+            <Link to={"/course/" + props.courseID}>
                 <h2>{props.courseName}</h2>
             </Link>
         </div>
     );
 };
-export default function Dashboard() {
-    const [courses, setCourses] = useState([]);
-    useEffect(() => {
-        async function getCourses() {
+}
+
+class Dashboard extends Component
+{
+    constructor(props)
+    {
+        super(props);
+        this.state = 
+        {
+            courses: [],
+        }
+    };
+}
+
+        async getCourses() {
             try {
                 let courseList = [];
                 const rawCourses = await http.get('http://localhost:5050/students/getCourses/');
@@ -22,14 +36,15 @@ export default function Dashboard() {
                     const course = await http.get('http://localhost:5050/courses/' + courseIds[i]);
                     courseList.push(course.data);
                 }
-                setCourses(courseList);
+                this.setState({courses: courseList });
             } catch(err) {
                 console.log('error: ' + err);
             }
         }
-        getCourses();
+        render()
+        {
+            return this.state.course.map(course => {
+                return <CoursePeak courseName={course.name} courseId={course._id} key={course._id}/>;
     }, []);
-    return courses.map(course => {
-        return <CoursePeak courseName={course.name} courseId={course._id} key={course._id}/>;
-    });
-};
+
+    };
