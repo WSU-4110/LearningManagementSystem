@@ -10,7 +10,7 @@ function CoursePeak(props) {
         </div>
     );
 };
-export default function Dashboard() {
+export default function StudentDashboard() {
     const [courses, setCourses] = useState([]);
     useEffect(() => {
         async function getCourses() {

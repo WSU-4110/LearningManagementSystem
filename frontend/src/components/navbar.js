@@ -2,7 +2,18 @@ import { Link } from 'react-router-dom';
 
 import '../css/nav.css';
 
-export default function Navbar() {
+let instance;
+
+class Navbar {
+  constructor() {
+    if (instance) {
+      throw new Error("New instance cannot be created!!");
+    }
+
+    instance = this;
+  }
+
+  getNavbar() {
     return (
         <nav className="navbar">
             <div className="nav-links">
@@ -26,4 +37,9 @@ export default function Navbar() {
             </div>
         </nav>
     );
-};
+  }
+}
+
+let navbarInstance = Object.freeze(new Navbar());
+
+export default navbarInstance;

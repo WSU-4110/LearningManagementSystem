@@ -2,8 +2,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import http from './http';
 import './css/App.css';
-import Navbar from './components/navbar.component';
-import Dashboard from './components/dashboard.component';
+import navbarInstance from './components/navbar';
+import StudentDashboard from './components/student.dashboard.component';
+import ProfessorDashboard from './components/professor.dashboard.component';
 import Course from './components/course.component';
 import Login from './components/login.component';
 import Assignment from './components/assignment.component';
@@ -32,11 +33,13 @@ export default function App() {
         <Router>
             <Navbar />
             <Routes>
-                <Route path = '/' element={<Dashboard/>} />
+                <Route path = '/' element={<StudnetDashboard/>} />
+                <Route path = '/' element={<ProfessorDashboard/>} />
                 <Route path = '/course/:id' element={<Course/>} />
                 <Route path = '/login' element={<Login/>} />
                 <Route path = '/register' element={<Register/>} />
-                <Route path = '/dashboard/' element={<Dashboard/>} />
+                <Route path = '/studentdashboard/' element={<StudentDashboard/>} />
+                <Route path = '/professordashboard/' element={<ProfessorDashboard/>} />
                 <Route path = '/assignment/:id' element={<Assignment/>} />
                 <Route path = '/profilepage' element={<ProfilePage/>} />
             </Routes>
