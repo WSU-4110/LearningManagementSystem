@@ -9,6 +9,7 @@ import Signin from './components/signin.component';
 import Assignment from './components/assignment.component';
 import Register from './components/register.component';
 import ProfilePage from './components/profilePage.component';
+import Settings from './components/settings.component';
 
 export default function App() {
   return (
@@ -23,6 +24,8 @@ export default function App() {
         <Route path = '/dashboard/:id' element={<Dashboard/>} />
         <Route path = '/assignment/:id' element={<Assignment/>} />
         <Route path = '/profilepage' element={<ProfilePage/>} />
+        <Route path = '/settings' element={<Settings/>} />
+
       </Routes>
     </Router>
   );
