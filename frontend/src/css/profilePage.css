@@ -8,6 +8,8 @@ h3 {
 
   ol {
     list-style: decimal inside;
-    padding-left: 0;
-    text-align: left;
+    padding-left: 20px;  
+        text-align: left;
+        list-style-type: circle;
+
   }

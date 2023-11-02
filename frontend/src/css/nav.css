@@ -14,8 +14,12 @@
     right: 0;
     z-index: 100;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
-}
+    background-image: url("nav.png");
+    background-position: center;
+    background-attachment: fixed;
 
+
+}
 /* Add space at the top of the body to prevent content from being hidden under the fixed navbar */
 body {
     padding-top: 60px; 
