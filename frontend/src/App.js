@@ -12,6 +12,8 @@ import Register from './components/register.component';
 import ProfilePage from './components/profilePage.component';
 import Footer from './components/Footer/Footer.component';
 import Header from './components/Header/Header.component';
+import Settings from './components/settings.component';
+
 
 export default function App() {
     useEffect(() => {
@@ -47,9 +49,9 @@ export default function App() {
                 <Route path = '/register' element={<Register/>} />
                 <Route path = '/dashboard/' element={<Dashboard/>} />
                 <Route path = '/assignment/:id' element={<Assignment/>} />
-                <Route path = '/profilepage' element={<ProfilePage/>} /> 
+                <Route path = '/profilepage' element={<ProfilePage/>} />
+                <Route path = '/settings' element={<Settings/>} />
             </Routes>
         </Router>*/
-
     );
 }

@@ -5,6 +5,7 @@ import '../css/nav.css';
 export default function Navbar() {
     return (
         <nav className="navbar">
+    
             <div className="nav-links">
                 <ul>
                     <li>
@@ -21,6 +22,9 @@ export default function Navbar() {
                     </li>                 
                     <li>
                         <Link to="/profilepage">Profile</Link>
+                    </li> 
+                    <li>
+                        <Link to="/settings">Settings</Link>
                     </li> 
                 </ul>
             </div>

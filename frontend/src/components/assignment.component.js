@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import http from '../http';
+import '../css/assignment.css';
+
 export default function Assignment() {
     const { id } = useParams();
     const [assignment, setAssignment] = useState();
