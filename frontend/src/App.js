@@ -9,6 +9,8 @@ import Login from './components/login.component';
 import Assignment from './components/assignment.component';
 import Register from './components/register.component';
 import ProfilePage from './components/profilePage.component';
+import Settings from './components/settings.component';
+
 export default function App() {
     useEffect(() => {
         async function tryRefreshToken() {
@@ -39,7 +41,9 @@ export default function App() {
                 <Route path = '/dashboard/' element={<Dashboard/>} />
                 <Route path = '/assignment/:id' element={<Assignment/>} />
                 <Route path = '/profilepage' element={<ProfilePage/>} />
-            </Routes>
+                <Route path = '/settings' element={<Settings/>} />
+
+      </Routes>
         </Router>
     );
 }
