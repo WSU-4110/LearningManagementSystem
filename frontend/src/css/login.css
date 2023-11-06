@@ -23,7 +23,40 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 300px;
   }
+
+  .login_input {
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    background: none;
+    padding: 10px;
+    padding-left: 24px;
+
+    width: 75%;
+    transition: .2s;
+    outline: none;
+  }
   
+  .login_input::placeholder {
+    opacity: 0.5
+  }
+
+  .password_input {
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    background: none;
+    padding: 10px;
+    padding-left: 24px;
+
+    width: 75%;
+    transition: .2s;
+    outline: none;
+  }
+  
+  .password_input::placeholder {
+    opacity: 0.5
+  }
+
+
   h1 {
     text-align: center;
     color: #000000;

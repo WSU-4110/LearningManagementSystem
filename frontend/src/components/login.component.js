@@ -31,20 +31,26 @@ export default function Login() {
         <div className="container">
         <h1>Login</h1>
             <form>
-                <div>
+                <div >
+                    <p>Username</p>
+                    <i className="fas fa-user"></i>
                     <input
                         type="email"
                         placeholder="Type your username"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        className="login_input"
                     />
                 </div>
                 <div>   
+                    <p>Password</p>
+                    <i className="fas fa-lock"></i>
                     <input
                         type="password"
                         placeholder="Type your password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        className="password_input"
                     />
                 </div>
                 <button type="button" onClick={handleSignin}>
