@@ -28,13 +28,13 @@ export default function Login() {
             .catch(err => { console.log(err) });
     };
     return (
-        <div>
+        <div className="container">
         <h1>Login</h1>
             <form>
                 <div>
                     <input
                         type="email"
-                        placeholder="Email"
+                        placeholder="Type your username"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -42,13 +42,13 @@ export default function Login() {
                 <div>   
                     <input
                         type="password"
-                        placeholder="Password"
+                        placeholder="Type your password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
                 <button type="button" onClick={handleSignin}>
-                Login
+                LOGIN
                 </button>
             </form>
         </div>

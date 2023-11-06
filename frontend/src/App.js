@@ -35,12 +35,12 @@ export default function App() {
         };
     }, []);
     return (
-       <Router>
-            <Header />
-            <main style={{minHeight:"93vh"}}></main>
-            <Footer />
-        </Router>
-        /*<Router>
+    //    <Router>
+    //         <Header />
+    //         <main style={{minHeight:"93vh"}}></main>
+    //         <Footer />
+    //     </Router>
+        <Router>
             <Navbar />
             <Routes>
                 <Route path = '/' element={<Dashboard/>} />
@@ -52,6 +52,6 @@ export default function App() {
                 <Route path = '/profilepage' element={<ProfilePage/>} />
                 <Route path = '/settings' element={<Settings/>} />
             </Routes>
-        </Router>*/
+        </Router>
     );
 }
