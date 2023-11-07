@@ -53,7 +53,7 @@ export default function Login() {
                         className="password_input"
                     />
                 </div>
-                <button type="button" onClick={handleSignin}>
+                <button type="button" onClick={handleLogin}>
                 Log In
                 </button>
             </form>
