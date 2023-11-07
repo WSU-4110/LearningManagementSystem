@@ -14,6 +14,7 @@ import { Link, Route, Routes} from 'react-router-dom';
 import Dashboard from '../dashboard.component';
 import ProfilePage from '../profilePage.component';
 import { LinkContainer } from 'react-router-bootstrap';
+import LandingPage from '../../screens/LandingPage.component';
 
 function Header() {
   return (
@@ -62,9 +63,8 @@ function Header() {
         ))}
       <div>
         <Routes>
-          <Route path = '/' element={<Dashboard/>} />
-          <Route path = '/dashboard/' element={<Dashboard/>} />
-          <Route path = '/profilepage' element={<ProfilePage/>} /> 
+          <Route exact path = '/dashboard/' element={<Dashboard/>}/>
+          <Route exact path = '/profilepage' element={<ProfilePage/>}/> 
         </Routes>
       </div>
       </>
