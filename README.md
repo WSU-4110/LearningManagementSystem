@@ -12,7 +12,7 @@
 <h1 align="center">Learning Management System</h1>
 
   <p align="center">
-    A web-app that is designed to facilitate the administration, delivery, tracking, and management of educational content and resources
+    A fullstack web-app that is designed to facilitate the administration, delivery, tracking, and management of educational content and resources
     <br />
     <a href="https://github.com/WSU-4110/LearningManagementSystem"><strong>Check out the docs »</strong></a>
     <br />
@@ -48,10 +48,11 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+### Purpose
+This project is a fullstack web application that will enhance the learning and teaching experience, making it more efficient and interactive in both academic and corporate settings. Playing a pivotal role in modern education and training by providing a comprehensive digital environment for the management and delivery of educational content and resources.
 
-This project is a fullstack web application that'll enhance the learning and teaching experience, making it more efficient and interactive in both academic and corporate settings. Playing a pivotal role in modern education and training by providing a comprehensive digital environment for the management and delivery of educational content and resources.
-
-Our technology stack utilizes React for the frontend. The backend frameworks include Mongodb and Express.js.
+### Functionality
+The users will be able to register or login before they are able to view their dashboard. There are two types of users: students and professors. Student and professor dashboards will have different functionality.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
