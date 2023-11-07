@@ -56,7 +56,7 @@ app.post('/login', async (req, res) => {
             const payload = { email: req.body.email, _id: student._id };
             const accessToken = generateAccessToken(payload);
             const refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET);
-            const refreshTokenObj = { token: refreshToken };      
+            const refreshTokenObj = { token: refreshToken };
             await RefreshToken(refreshTokenObj).save();
             res.json({ accessToken: accessToken, refreshToken: refreshToken });
         } else {
@@ -64,7 +64,7 @@ app.post('/login', async (req, res) => {
         }
     } catch(err) {
         console.log("authServer is messed up");
-        //res.status(500).json('error: ' + err);
+        res.status(500).json('error: ' + err);
     }
 });
 app.listen(4000)
