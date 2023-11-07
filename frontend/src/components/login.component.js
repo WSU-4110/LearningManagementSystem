@@ -7,7 +7,7 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    function handleSignin() {
+    function handleLogin() {
         const student = {
             email: email,
             password: password
@@ -47,7 +47,7 @@ export default function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <button type="button" onClick={handleSignin}>
+                <button type="button" onClick={handleLogin}>
                 Login
                 </button>
             </form>

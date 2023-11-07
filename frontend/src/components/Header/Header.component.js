@@ -1,4 +1,5 @@
 import React from 'react'
+import http from '../../http';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -15,6 +16,10 @@ import Dashboard from '../dashboard.component';
 import ProfilePage from '../profilePage.component';
 import { LinkContainer } from 'react-router-bootstrap';
 import LandingPage from '../../screens/LandingPage.component';
+
+async function handleLogout() {
+  await http.post('http://localhost:4000/logout', {token: localStorage.getItem('refreshToken')});
+}
 
 function Header() {
   return (
@@ -42,8 +47,10 @@ function Header() {
                       id={`offcanvasNavbarDropdown-expand-${expand}`}>
                       <NavDropdown.Item as={Link} to="/profilePage">Profile</NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item href="#action5">
-                        Log Out
+                      <NavDropdown.Item
+                          onClick={handleLogout}
+                      >
+                        Log out
                       </NavDropdown.Item>
                     </NavDropdown>
                   </Nav>
