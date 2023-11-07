@@ -61,11 +61,10 @@ function Header() {
           </Navbar>
         ))}
       <div>
-        <Routes>
-          <Route path = '/' element={<Dashboard/>} />
+        {/* <Routes>
           <Route path = '/dashboard/' element={<Dashboard/>} />
           <Route path = '/profilepage' element={<ProfilePage/>} /> 
-        </Routes>
+        </Routes> */}
       </div>
       </>
   );
