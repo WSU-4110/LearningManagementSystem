@@ -31,7 +31,7 @@ export default function Login() {
         <div className="container">
         <h1>Login</h1>
             <form>
-                <div >
+                <div className="login_username">
                     <p>Username</p>
                     <i className="fas fa-user"></i>
                     <input
@@ -42,7 +42,7 @@ export default function Login() {
                         className="login_input"
                     />
                 </div>
-                <div>   
+                <div className="login_password">   
                     <p>Password</p>
                     <i className="fas fa-lock"></i>
                     <input
@@ -54,7 +54,7 @@ export default function Login() {
                     />
                 </div>
                 <button type="button" onClick={handleSignin}>
-                LOGIN
+                Log In
                 </button>
             </form>
         </div>

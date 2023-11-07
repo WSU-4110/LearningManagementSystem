@@ -24,6 +24,11 @@ body {
     width: 300px;
   }
 
+  .login_username {
+    padding: 20px 0px;	
+    position: relative;	
+  }
+
   .login_input {
     border: none;
     border-bottom: 2px solid #D1D1D4;
@@ -38,6 +43,10 @@ body {
   
   .login_input::placeholder {
     opacity: 0.5
+  }
+
+  .login_password {
+    margin-bottom: 2em;
   }
 
   .password_input {
