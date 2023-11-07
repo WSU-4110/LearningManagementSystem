@@ -7,7 +7,7 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    function handleSignin() {
+    function handleLogin() {
         const student = {
             email: email,
             password: password
@@ -18,7 +18,7 @@ export default function Login() {
                     const accessToken = res.data.accessToken;
                     const refreshToken = res.data.refreshToken;
                     localStorage.setItem("accessToken", accessToken);
-                    localStorage.setItem("refreshToken", refreshToken);
+                    localStorage.setItem("refreshToken", refreshToken); 
                     console.log('valid password');
                     navigate('/dashboard');
                 } else {

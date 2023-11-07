@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import http from './http';
 //import './css/App.css';
 import './bootstrap.css';
-import Navbar from './components/navbar.component';
+//import Navbar from './components/navbar.component';
 import Dashboard from './components/dashboard.component';
 import Course from './components/course.component';
 import Login from './components/login.component';
@@ -13,19 +13,24 @@ import ProfilePage from './components/profilePage.component';
 import Footer from './components/Footer/Footer.component';
 import Header from './components/Header/Header.component';
 import Settings from './components/settings.component';
-
+import LandingPage from './screens/LandingPage.component';
+import { useNavigate } from 'react-router-dom';
 
 export default function App() {
+    /*
     useEffect(() => {
         async function tryRefreshToken() {
             console.log('mount');
-            try {
-                const newAccessToken = await http.post('http://localhost:4000/token', { token: localStorage.getItem('refreshToken')});
-                if (newAccessToken != null) {
-                    localStorage.setItem('accessToken', newAccessToken.data.accessToken);
+            if (localStorage.getItem('refreshToken') != null) {
+                try {
+                    //const newAccessToken = null;
+                    const newAccessToken = await http.post('http://localhost:4000/token', { token: localStorage.getItem('refreshToken')});
+                    if (newAccessToken != null) {
+                        localStorage.setItem('accessToken', newAccessToken.data.accessToken);
+                    }
+                } catch(err) {
+                    console.log('error' + err);
                 }
-            } catch(err) {
-                console.log('error' + err);
             }
         }
         tryRefreshToken();
@@ -34,14 +39,11 @@ export default function App() {
             await http.post('http://localhost:4000/logout', { token: localStorage.getItem('refreshToken')} );
         };
     }, []);
+<<<<<<< HEAD
+    */
     return (
-    //    <Router>
-    //         <Header />
-    //         <main style={{minHeight:"93vh"}}></main>
-    //         <Footer />
-    //     </Router>
-        <Router>
-            <Navbar />
+       <Router>
+            <Header />
             <Routes>
                 <Route path = '/' element={<Dashboard/>} />
                 <Route path = '/course/:id' element={<Course/>} />
@@ -52,6 +54,7 @@ export default function App() {
                 <Route path = '/profilepage' element={<ProfilePage/>} />
                 <Route path = '/settings' element={<Settings/>} />
             </Routes>
+            <Footer />
         </Router>
     );
 }

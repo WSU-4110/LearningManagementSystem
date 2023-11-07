@@ -1,4 +1,5 @@
 import React from 'react'
+import http from '../../http';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -14,6 +15,11 @@ import { Link, Route, Routes} from 'react-router-dom';
 import Dashboard from '../dashboard.component';
 import ProfilePage from '../profilePage.component';
 import { LinkContainer } from 'react-router-bootstrap';
+import LandingPage from '../../screens/LandingPage.component';
+
+async function handleLogout() {
+  await http.post('http://localhost:4000/logout', {token: localStorage.getItem('refreshToken')});
+}
 
 function Header() {
   return (
@@ -41,8 +47,10 @@ function Header() {
                       id={`offcanvasNavbarDropdown-expand-${expand}`}>
                       <NavDropdown.Item as={Link} to="/profilePage">Profile</NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item href="#action5">
-                        Log Out
+                      <NavDropdown.Item
+                          onClick={handleLogout}
+                      >
+                        Log out
                       </NavDropdown.Item>
                     </NavDropdown>
                   </Nav>
@@ -61,11 +69,16 @@ function Header() {
           </Navbar>
         ))}
       <div>
+        {/* 
         <Routes>
-          <Route path = '/' element={<Dashboard/>} />
           <Route path = '/dashboard/' element={<Dashboard/>} />
           <Route path = '/profilepage' element={<ProfilePage/>} /> 
         </Routes>
+        <Routes>
+          <Route exact path = '/dashboard/' element={<Dashboard/>}/>
+          <Route exact path = '/profilepage' element={<ProfilePage/>}/> 
+        </Routes> 
+        */}
       </div>
       </>
   );
