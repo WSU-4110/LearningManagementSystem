@@ -13,6 +13,8 @@ import ProfilePage from './components/profilePage.component';
 import Footer from './components/Footer/Footer.component';
 import Header from './components/Header/Header.component';
 import Settings from './components/settings.component';
+import LandingPage from './screens/LandingPage.component';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function App() {
@@ -34,10 +36,19 @@ export default function App() {
             await http.post('http://localhost:4000/logout', { token: localStorage.getItem('refreshToken')} );
         };
     }, []);
-    return (
+    return (                
        <Router>
             <Header />
-            <main style={{minHeight:"93vh"}}></main>
+            <Routes>
+                <Route path = '/' element={<LandingPage/>} />
+                <Route path = '/course/:id' element={<Course/>} />
+                <Route path = '/login' element={<Login/>} />
+                <Route path = '/register' element={<Register/>} />
+                <Route path = '/dashboard/' element={<Dashboard/>} />
+                <Route path = '/assignment/:id' element={<Assignment/>} />
+                <Route path = '/profilepage' element={<ProfilePage/>} />
+                <Route path = '/settings' element={<Settings/>} />
+            </Routes>     
             <Footer />
         </Router>
         /*<Router>

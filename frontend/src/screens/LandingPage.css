@@ -1,0 +1,50 @@
+.main {
+    min-height: 93vh;
+    display: flex;
+    align-items: center;
+    background: fixed;
+}
+
+.title {
+    font-size: 50px;
+}
+
+.subtitle {
+    font-size: 25px;
+    padding-top: 10px;
+}
+
+.intro-text {
+    width: 100%;
+    text-align: center;
+}
+
+.buttonContainer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.landingButton {
+    width: 150px;
+    height: 55px;
+}
+
+@media only screen and (min-width:1200px){
+    .buttonContainer{
+        padding: 0;
+    }
+    .title{
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width:768px){
+    .landingButton{
+        width: 150px;
+        height: 50px;
+    }
+    .title{
+        font-size: 45px;
+    }
+}
