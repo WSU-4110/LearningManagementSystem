@@ -32,10 +32,10 @@ const LandingPage = () => {
           </div>
         </Row>
 
-        <Routes>
+        {/* <Routes>
           <Route exact path = '/login' element={<Login/>}/> 
           <Route exact path = '/register/' element={<Register/>} />
-      </Routes>
+      </Routes> */}
       </Container>
     </div>
   )
