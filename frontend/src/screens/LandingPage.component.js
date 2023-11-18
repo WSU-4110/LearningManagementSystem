@@ -22,8 +22,7 @@ const LandingPage = () => {
 
             <div className="buttonContainer">
               <Link to="/login">Login</Link>
-              <Button size="lg" className="landingButton" variant="outline-primary">Login</Button>
-
+              {/* <Button size="lg" className="landingButton" variant="outline-primary">Login</Button> */}
               <Link to="/register">Register</Link>
             </div>
 
