@@ -1,9 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useEffect } from 'react';
-import http from './http';
-//import './css/App.css';
 import './bootstrap.css';
-//import Navbar from './components/navbar.component';
 import Dashboard from './components/dashboard.component';
 import Course from './components/course.component';
 import Login from './components/login.component';
@@ -14,33 +10,8 @@ import Footer from './components/Footer/Footer.component';
 import Header from './components/Header/Header.component';
 import Settings from './components/settings.component';
 import LandingPage from './screens/LandingPage.component';
-import { useNavigate } from 'react-router-dom';
 
 export default function App() {
-    /*
-    useEffect(() => {
-        async function tryRefreshToken() {
-            console.log('mount');
-            if (localStorage.getItem('refreshToken') != null) {
-                try {
-                    //const newAccessToken = null;
-                    const newAccessToken = await http.post('http://localhost:4000/token', { token: localStorage.getItem('refreshToken')});
-                    if (newAccessToken != null) {
-                        localStorage.setItem('accessToken', newAccessToken.data.accessToken);
-                    }
-                } catch(err) {
-                    console.log('error' + err);
-                }
-            }
-        }
-        tryRefreshToken();
-        return async () => {
-            console.log('cleanup');
-            await http.post('http://localhost:4000/logout', { token: localStorage.getItem('refreshToken')} );
-        };
-    }, []);
-<<<<<<< HEAD
-    */
     return (
        <Router>
             <Header />

@@ -43,18 +43,6 @@ function Header() {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-        {/* 
-        <div>
-          <Routes>
-            <Route path = '/dashboard/' element={<Dashboard/>} />
-            <Route path = '/profilepage' element={<ProfilePage/>} /> 
-          </Routes>
-          <Routes>
-            <Route exact path = '/dashboard/' element={<Dashboard/>}/>
-            <Route exact path = '/profilepage' element={<ProfilePage/>}/> 
-          </Routes> 
-        </div>
-        */}
       </>
   );
 }
