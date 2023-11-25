@@ -12,7 +12,7 @@ router.route('/').get(async (req, res) => {
         res.status(400).json('error: ' + err);
     }
 });
-// get all courses of a  student by _id
+// get all courses of a student by _id
 router.route('/getCourses').get(async (req, res) => {
     try {
         const student = await Student.findById(req.user._id);

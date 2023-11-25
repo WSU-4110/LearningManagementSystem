@@ -20,6 +20,10 @@ require('dotenv').config();
 
 // creating a function (that will be used as a middleware) to authenticate tokens
 function authenticateToken(req, res, next) {
+    // skip token verification in testing
+    if (process.env.NODE_ENV === 'test') {
+        return next();
+    }
     const authHeader = req.headers.authorization;
     const token = authHeader && authHeader.split(' ')[1];
     if (token == null) return res.sendStatus(401);
@@ -72,3 +76,8 @@ app.use('/courses', coursesRouter);
 app.listen(port, () => {
     console.log(`data server running on port ${port}`);
 });
+
+
+
+// export app for testing
+module.exports = app;
