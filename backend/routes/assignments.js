@@ -1,5 +1,8 @@
 const router = require('express').Router();
 const Assignment = require('../models/assignment.model');
+
+// routes:
+// route for getting assignments by _id
 router.route('/:id').get(async (req, res) => {
     try {
         let assignment = await Assignment.findById(req.params.id);
@@ -8,6 +11,7 @@ router.route('/:id').get(async (req, res) => {
         res.status(400).json('error: ' + err);
     }
 });
+// route for adding a new assignment
 router.route('/add').post(async (req, res) => {
     try {
         await Assignment({
