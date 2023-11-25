@@ -45,7 +45,7 @@ export default function App() {
        <Router>
             <Header />
             <Routes>
-                <Route path = '/' element={<Dashboard/>} />
+                <Route path = '/' element={<LandingPage/>} />
                 <Route path = '/course/:id' element={<Course/>} />
                 <Route path = '/login' element={<Login/>} />
                 <Route path = '/register' element={<Register/>} />
