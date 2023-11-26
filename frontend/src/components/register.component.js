@@ -55,6 +55,35 @@ export default function Register() {
             // If password is less than 8 characters long, set an error message
             setError('Password must be >=8 characters');
             return;
+        } else if ((password.indexOf('a') === -1) &&
+            (password.indexOf('b') === -1) && 
+            (password.indexOf('c') === -1) && 
+            (password.indexOf('d') === -1) && 
+            (password.indexOf('e') === -1) && 
+            (password.indexOf('f') === -1) && 
+            (password.indexOf('g') === -1) && 
+            (password.indexOf('h') === -1) && 
+            (password.indexOf('i') === -1) && 
+            (password.indexOf('j') === -1) && 
+            (password.indexOf('k') === -1) && 
+            (password.indexOf('l') === -1) && 
+            (password.indexOf('m') === -1) && 
+            (password.indexOf('n') === -1) && 
+            (password.indexOf('o') === -1) && 
+            (password.indexOf('p') === -1) && 
+            (password.indexOf('q') === -1) && 
+            (password.indexOf('r') === -1) && 
+            (password.indexOf('s') === -1) && 
+            (password.indexOf('t') === -1) && 
+            (password.indexOf('u') === -1) && 
+            (password.indexOf('v') === -1) && 
+            (password.indexOf('w') === -1) && 
+            (password.indexOf('x') === -1) && 
+            (password.indexOf('y') === -1) && 
+            (password.indexOf('z') === -1)) {
+            // If password doesn't have a lowercase letter, set an error message
+            setError('Add a lowercase letter to password');
+            return;
         } else if ((password.indexOf(' ') === -1) &&
             (password.indexOf('!') === -1) && 
             (password.indexOf('"') === -1) && 
