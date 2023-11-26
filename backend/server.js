@@ -64,9 +64,11 @@ mongoose.connection.once('open', () => {
 
 // import our routers and give them to our express app
 const assignmentRouter = require('./routes/assignments');
+const instructorRouter = require('./routes/instructors');
 const studentsRouter = require('./routes/students');
 const coursesRouter = require('./routes/courses');
 app.use('/assignments', assignmentRouter);
+app.use('/instructors', instructorRouter);
 app.use('/students', studentsRouter);
 app.use('/courses', coursesRouter);
 

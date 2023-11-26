@@ -1,5 +1,5 @@
 const request = require('supertest');
-const data_server = require('../server')(5003);
+const data_server = require('../server')(5004);
 
 let test_student_id;
 
