@@ -51,6 +51,42 @@ export default function Register() {
             // If password is empty, set an error message
             setError('Password field is empty');
             return;
+        } else if ((password.indexOf(' ') === -1) &&
+            (password.indexOf('!') === -1) && 
+            (password.indexOf('"') === -1) && 
+            (password.indexOf('#') === -1) && 
+            (password.indexOf('$') === -1) && 
+            (password.indexOf('%') === -1) && 
+            (password.indexOf('&') === -1) && 
+            (password.indexOf('\'') === -1) && 
+            (password.indexOf('(') === -1) && 
+            (password.indexOf(')') === -1) && 
+            (password.indexOf('*') === -1) && 
+            (password.indexOf('+') === -1) && 
+            (password.indexOf(',') === -1) && 
+            (password.indexOf('-') === -1) && 
+            (password.indexOf('.') === -1) && 
+            (password.indexOf('/') === -1) && 
+            (password.indexOf(':') === -1) && 
+            (password.indexOf(';') === -1) && 
+            (password.indexOf('<') === -1) && 
+            (password.indexOf('=') === -1) && 
+            (password.indexOf('>') === -1) && 
+            (password.indexOf('?') === -1) && 
+            (password.indexOf('@') === -1) && 
+            (password.indexOf('[') === -1) && 
+            (password.indexOf('\\') === -1) && 
+            (password.indexOf(']') === -1) && 
+            (password.indexOf('^') === -1) && 
+            (password.indexOf('_') === -1) && 
+            (password.indexOf('`') === -1) && 
+            (password.indexOf('{') === -1) && 
+            (password.indexOf('|') === -1) && 
+            (password.indexOf('}') === -1) && 
+            (password.indexOf('~') === -1)) {
+            // If password doesn't have a special character, set an error message
+            setError('Add a special character to password');
+            return;
         }
 
         // Simple first name validation
