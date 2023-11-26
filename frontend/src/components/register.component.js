@@ -46,7 +46,7 @@ export default function Register() {
             return;
         }
 
-        // Simple password validation
+        // Password validation
         if (!password) {
             // If password is empty, set an error message
             setError('Password field is empty');
@@ -83,6 +83,35 @@ export default function Register() {
             (password.indexOf('z') === -1)) {
             // If password doesn't have a lowercase letter, set an error message
             setError('Add a lowercase letter to password');
+            return;
+        } else if ((password.indexOf('A') === -1) &&
+            (password.indexOf('B') === -1) && 
+            (password.indexOf('C') === -1) && 
+            (password.indexOf('D') === -1) && 
+            (password.indexOf('E') === -1) && 
+            (password.indexOf('F') === -1) && 
+            (password.indexOf('G') === -1) && 
+            (password.indexOf('H') === -1) && 
+            (password.indexOf('I') === -1) && 
+            (password.indexOf('J') === -1) && 
+            (password.indexOf('K') === -1) && 
+            (password.indexOf('L') === -1) && 
+            (password.indexOf('M') === -1) && 
+            (password.indexOf('N') === -1) && 
+            (password.indexOf('O') === -1) && 
+            (password.indexOf('P') === -1) && 
+            (password.indexOf('Q') === -1) && 
+            (password.indexOf('R') === -1) && 
+            (password.indexOf('S') === -1) && 
+            (password.indexOf('T') === -1) && 
+            (password.indexOf('U') === -1) && 
+            (password.indexOf('V') === -1) && 
+            (password.indexOf('W') === -1) && 
+            (password.indexOf('X') === -1) && 
+            (password.indexOf('Y') === -1) && 
+            (password.indexOf('Z') === -1)) {
+            // If password doesn't have an uppercase letter, set an error message
+            setError('Add an uppercase letter to password');
             return;
         } else if ((password.indexOf(' ') === -1) &&
             (password.indexOf('!') === -1) && 
