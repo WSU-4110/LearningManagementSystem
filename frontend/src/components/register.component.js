@@ -52,6 +52,13 @@ export default function Register() {
             setError('Password field is empty');
             return;
         }
+
+        // Simple first name validation
+        if (!firstName) {
+            // If firstName is empty, set an error message
+            setError('First Name field is empty');
+            return;
+        }
         
         const student = {
             email: email,
