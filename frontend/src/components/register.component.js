@@ -51,6 +51,10 @@ export default function Register() {
             // If password is empty, set an error message
             setError('Password field is empty');
             return;
+        } else if (password.length < 8) {
+            // If password is less than 8 characters long, set an error message
+            setError('Password must be >=8 characters');
+            return;
         } else if ((password.indexOf(' ') === -1) &&
             (password.indexOf('!') === -1) && 
             (password.indexOf('"') === -1) && 
