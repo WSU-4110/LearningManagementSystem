@@ -34,11 +34,11 @@ export default function Register() {
     }
 
     function handleRegister() {
-        
+
         // Simple email validation
         if (!email) {
             // If email is empty, set an error message
-            setError('Email field is blank');
+            setError('Email field is empty');
             return;
         } else if (email.indexOf('@') === -1) {
             // If email does not contain '@', set an error message
@@ -47,11 +47,11 @@ export default function Register() {
         }
 
         // Simple password validation
-        // if (!password || email.indexOf('@') === -1) {
-        //     // If password is empty or does not contain '@', set an error message
-        //     setError('Invalid email address: add @');
-        //     return;
-        // }
+        if (!password) {
+            // If password is empty, set an error message
+            setError('Password field is empty');
+            return;
+        }
         
         const student = {
             email: email,
