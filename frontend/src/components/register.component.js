@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
+import {AUTH_SERVER_URL} from '../constants';
+import http from '../http';
 import '../css/Register.css';
 
 
@@ -15,7 +16,7 @@ export default function Register() {
             firstName: firstName,
             lastName: lastName
         };
-        axios.post('http://localhost:4000/', student)
+        http.post(AUTH_SERVER_URL, student)
             .catch((err) => console.log(err));
         window.location = '/login';
     };

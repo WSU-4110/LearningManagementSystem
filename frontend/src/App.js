@@ -20,7 +20,7 @@ export default function App() {
                 <Route path = '/course/:id' element={<Course/>} />
                 <Route path = '/login' element={<Login/>} />
                 <Route path = '/register' element={<Register/>} />
-                <Route path = '/dashboard/' element={<Dashboard/>} />
+                <Route path = '/dashboard' element={<Dashboard/>} />
                 <Route path = '/assignment/:id' element={<Assignment/>} />
                 <Route path = '/profilepage' element={<ProfilePage/>} />
                 <Route path = '/settings' element={<Settings/>} />

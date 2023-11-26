@@ -20,10 +20,6 @@ require('dotenv').config();
 
 // creating a function (that will be used as a middleware) to authenticate tokens
 function authenticateToken(req, res, next) {
-    // skip token verification in testing
-    if (process.env.NODE_ENV === 'test') {
-        return next();
-    }
     const authHeader = req.headers.authorization;
     const token = authHeader && authHeader.split(' ')[1];
     if (token == null) return res.sendStatus(401);
@@ -47,7 +43,11 @@ const port = 5050;
 app.use(cors());
 // express.json() allows us to easily read json
 app.use(express.json());
-app.use(authenticateToken);
+// skip token verification in testing
+if (process.env.USE_TOKEN_AUTH === 'true') {
+    app.use(authenticateToken);
+}
+
 
 
 
@@ -71,13 +71,32 @@ app.use('/students', studentsRouter);
 app.use('/courses', coursesRouter);
 
 
-
 // actually starting the server
-app.listen(port, () => {
-    console.log(`data server running on port ${port}`);
-});
+if (process.env.RUN_DATA_SERVER === 'true') {
+    app.listen(port, () => {
+        console.log(`data server: running on port ${port}`);
+    });
+}
+
 
 
 
 // export app for testing
-module.exports = app;
+let test_port;
+let server_instance
+
+module.exports = (port) => {
+    test_port = port;
+    server_instance = app.listen(test_port, () => {
+        console.log(`data server is running on port ${test_port}`);
+    });
+    return server_instance;
+};
+
+module.exports.stopServer = () => {
+    if (server_instance) {
+        server_instance.close(() => {
+            console.log(`data server on port ${test_port} is stopped`);
+        });
+    }
+};

@@ -1,18 +1,20 @@
-import '../css/login.css';
-import { useNavigate} from 'react-router-dom';
-import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
+import {useState} from 'react';
+import {AUTH_SERVER_URL} from '../constants';
 import http from '../http';
+import '../css/login.css';
+
 export default function Login() {
-    //const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    
     function handleLogin() {
         const student = {
             email: email,
             password: password
         };
-        http.post('http://localhost:4000/login', student)
+        http.post(AUTH_SERVER_URL + '/login', student)
             .then(res => {
                 if (res.data) {
                     const accessToken = res.data.accessToken;
@@ -27,6 +29,7 @@ export default function Login() {
             })
             .catch(err => { console.log(err) });
     };
+    
     return (
         <div className="container">
         <h1>Login</h1>

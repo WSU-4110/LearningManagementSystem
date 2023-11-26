@@ -100,6 +100,7 @@ app.post('/login', async (req, res) => {
         const student = await Student.findOne({ email: req.body.email });
         if (student == null) {
             res.status(400).json(`student with email: ${req.body.email} not found`);
+            return;
         }
         // compare hashes
         if (await bcrypt.compare(req.body.password, student.password)) {
@@ -114,7 +115,7 @@ app.post('/login', async (req, res) => {
             // put refresh token object in the database (so we remember that it is valid)
             await RefreshToken(refreshTokenObj).save();
             // give the access token and the refresh token back
-            res.json({ accessToken: accessToken, refreshToken: refreshToken });
+            res.json({ id: student._id, accessToken: accessToken, refreshToken: refreshToken });
         } else {
             res.send(false);
         }
@@ -128,5 +129,5 @@ app.post('/login', async (req, res) => {
 
 // actually starting the auth server
 app.listen(port, () => {
-    console.log(`auth server running on port ${port}`);
+    console.log(`auth server: running on port ${port}`);
 });

@@ -1,6 +1,7 @@
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
+import {DATA_SERVER_URL} from '../constants';
 import http from '../http';
 function AssignmentPeak(props) {
     return (
@@ -17,15 +18,18 @@ export default function Course() {
     useEffect(() => {
         async function getAssignments() {
             try {
-                let assignmentList = [];
-                const response = await http.get('http://localhost:5050/courses/' + id);
-                const course = response.data;
-                const assignmentIds = course.assignments;
-                for (let i = 0; i < Object.values(assignmentIds).length; i++) {
-                    const assignment = await http.get('http://localhost:5050/assignments/' + assignmentIds[i]);
-                    assignmentList.push(assignment.data);
+                let response;
+                let accumulator_assignment_list = [];
+                // get the course this component represents
+                response = await http.get(DATA_SERVER_URL + "/courses/" + id);
+                let course = response.data.course;
+                let assignment_ids = course.assignments;
+                for (let i = 0; i < assignment_ids.length; ++i) {
+                    response = await http.get(DATA_SERVER_URL + "/assignments/" + assignment_ids[i]);
+                    let assignment = response.data.assignment;
+                    accumulator_assignment_list.push(assignment);
                 }
-                setAssignments(assignmentList);
+                setAssignments(accumulator_assignment_list);
             } catch(err) {
                 console.log('error: ' + err);
             }
