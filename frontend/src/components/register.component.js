@@ -113,6 +113,19 @@ export default function Register() {
             // If password doesn't have an uppercase letter, set an error message
             setError('Add an uppercase letter to password');
             return;
+        } else if ((password.indexOf('0') === -1) &&
+            (password.indexOf('1') === -1) && 
+            (password.indexOf('2') === -1) && 
+            (password.indexOf('3') === -1) && 
+            (password.indexOf('4') === -1) && 
+            (password.indexOf('5') === -1) && 
+            (password.indexOf('6') === -1) && 
+            (password.indexOf('7') === -1) && 
+            (password.indexOf('8') === -1) && 
+            (password.indexOf('9') === -1)) {
+            // If password doesn't have a number, set an error message
+            setError('Add a number to password');
+            return;
         } else if ((password.indexOf(' ') === -1) &&
             (password.indexOf('!') === -1) && 
             (password.indexOf('"') === -1) && 
