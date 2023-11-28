@@ -7,28 +7,45 @@ import http from '../http';
 
 export default function ProfilePage() {
 
-    const [list, setList] = useState([])
+    const [user, setUser] = useState({})
 
     useEffect(()=> {  
         // here we get the data by requesting data from this link
         // to our nodejs server
+        const currentStudentId = getCurrentStudentId();
+
         http.get('http://localhost:5050/students/')
-        .then((res)=> setList(res.data));
+        .then((res)=> setUser(res.data));
     }, []);
 
-    let firstNames = list.map((Student)=>{
-        return (
-            <li key={Student.firstName}>{Student.firstName}</li>
-        )
+    const getCurrentStudentId = () => {
+        
+        // Get it from the authentication token or another source
+        return '123'; // Replace with the actual ID
+    };
 
-    });
+    // let firstNames = list.map((Student)=>{
+    //     return (
+    //         <li key={Student.firstName}>{Student.firstName}</li>
+    //     )
 
-    let lastNames = list.map((Student)=>{
-        return (
-            <li key={Student.lastName}>{Student.lastName}</li>
-        )
+    // });
 
-    });
+    // let lastNames = list.map((Student)=>{
+    //     return (
+    //         <li key={Student.lastName}>{Student.lastName}</li>
+    //     )
+
+    // });
+
+    return(
+        <div>
+            <h3>User Profile</h3>
+            <p>First Name: {user.firstName}</p>
+            <p>Last Name: {user.lastName}</p>
+        </div>
+    );
+
     /*constructor(props) {
         super(props);
 
@@ -42,7 +59,6 @@ export default function ProfilePage() {
             email: '',
         };
     }
-
 
     onChangeFirstName(e) {
         this.setState({
@@ -78,14 +94,4 @@ export default function ProfilePage() {
 
         window.location = "/" // take user back to homepage
     }*/
-    
-
-    return(
-        <div>
-            <h3>User Profile</h3>
-            <ol>
-                {firstNames}
-            </ol>
-        </div>
-    );
 }
