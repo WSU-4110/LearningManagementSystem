@@ -21,21 +21,19 @@ const LandingPage = () => {
             </div>
 
             <div className="buttonContainer">
-              <a href='/login'>
+              <Link to="/login">Login</Link>
               <Button size="lg" className="landingButton" variant="outline-primary">Login</Button>
-              </a>
-              <a href='/register' exact>
-              <Button size="lg" className="landingButton" >Register</Button>
-              </a>
+
+              <Link to="/register">Register</Link>
             </div>
 
           </div>
         </Row>
 
-        <Routes>
-          <Route exact path = '/login' element={<Login/>}/> 
-          <Route exact path = '/register/' element={<Register/>} />
-      </Routes>
+        {/* <Routes>
+          <Route path = '/login' element={<Login/>}/> 
+          <Route path = '/register/' element={<Register/>} />
+      </Routes> */}
       </Container>
     </div>
   )

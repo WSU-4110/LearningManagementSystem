@@ -1,5 +1,6 @@
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import {useParams} from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import {DATA_SERVER_URL} from '../constants';
 import http from '../http';
 import '../css/assignment.css';
 

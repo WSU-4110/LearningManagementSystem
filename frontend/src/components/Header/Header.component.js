@@ -19,7 +19,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import LandingPage from '../../screens/LandingPage.component';
 
 async function handleLogout() {
-  await http.post('http://localhost:4000/logout', {token: localStorage.getItem('refreshToken')});
+await http.post('http://localhost:4000/logout', {token: localStorage.getItem('refreshToken')});
 }
 
 function Header() {
@@ -43,18 +43,6 @@ function Header() {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-        {/* 
-        <div>
-          <Routes>
-            <Route path = '/dashboard/' element={<Dashboard/>} />
-            <Route path = '/profilepage' element={<ProfilePage/>} /> 
-          </Routes>
-          <Routes>
-            <Route exact path = '/dashboard/' element={<Dashboard/>}/>
-            <Route exact path = '/profilepage' element={<ProfilePage/>}/> 
-          </Routes> 
-        </div>
-        */}
       </>
   );
 }
