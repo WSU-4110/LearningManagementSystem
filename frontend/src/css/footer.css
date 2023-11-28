@@ -1,10 +1,10 @@
 .footer {
-    background-color: white;
+    background-color: rgb(123, 166, 187);
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -12,5 +12,9 @@
 }
 
 .footer > p {
-    margin-top: .9em;
+    margin-top: 1em;
 }
+.content-wrapper {
+    padding-bottom: 60px; /* Adjust this value to match the height of your footer */
+    /* Add any other styles as needed */
+  }

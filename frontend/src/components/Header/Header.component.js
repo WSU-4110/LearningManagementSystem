@@ -43,6 +43,10 @@ function Header() {
             </Navbar.Collapse>
           </Container>
         </Navbar>
+        <div className="content-wrapper">
+        {/* Your main content here */}
+        {/* Ensure that this content wrapper encapsulates all your page content */}
+      </div>
       </>
   );
 }

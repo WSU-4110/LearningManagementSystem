@@ -5,8 +5,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 40em;
     margin: 0;
+    background-size: cover;
+    padding-top: 10em; 
+    padding-bottom: 5em; 
+
   }
   
   .container {

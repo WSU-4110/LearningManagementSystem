@@ -186,7 +186,7 @@ export default function Register() {
             firstName: firstName,
             lastName: lastName
         };
-        http.post(AUTH_SERVER_URL, student)
+        http.post(AUTH_SERVER_URL + '/student', student)
             .then(() => {
                 // Redirect to login after successful registration
                 window.location = '/studentLogin';

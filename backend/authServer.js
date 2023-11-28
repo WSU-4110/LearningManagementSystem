@@ -19,6 +19,7 @@ require('dotenv').config();
 // import mongoose models (these are needed to interact with the database)
 let Student = require('./models/student.model');
 let RefreshToken = require('./models/refreshToken.model');
+let Instructor = require('./models/instructor.model');
 
 
 
@@ -52,7 +53,7 @@ function generateAccessToken(payload) {
 
 // defining routes
 // this route is for creating a new student
-app.post('/', async (req, res) => {
+app.post('/student', async (req, res) => {
     try {
         // hash the password (the password is in the body of the request)
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -70,6 +71,17 @@ app.post('/', async (req, res) => {
     } catch(err) {
         // incase of an error, send back status 500
         res.status(500).send('error: ' + err);
+    }
+});
+// route for creating a new instructor
+app.post('/instructor', async (req, res) => {
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.instructor.password, 10);
+        req.body.instructor.password = hashedPassword;
+        const instructor = await Instructor(req.body.instructor).save();
+        res.status(200).json({message: 'instructor created', id: instructor._id});
+    } catch(err) {
+        res.status(400).json({message: 'error: ' + err});
     }
 });
 // this route is used by users that already have a valid refresh token, to get a new access token

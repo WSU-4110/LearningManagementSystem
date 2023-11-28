@@ -15,7 +15,7 @@ router.route('/id').get(async (req, res) => {
 
 // route for each CRUD operation
 // [C] create an instructor
-router.route('/').post(async (req, res) => {
+router.route('/').post(async (req, res) => { // !!!!!!! dont need a redundant object!
     try {
         const instructor = await Instructor({
             email: req.body.instructor.email,
