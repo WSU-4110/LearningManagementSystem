@@ -4,7 +4,7 @@ import {AUTH_SERVER_URL} from '../constants';
 import http from '../http';
 import '../css/login.css';
 
-export default function Login() {
+export default function InstructorLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ export default function Login() {
                     localStorage.setItem("accessToken", accessToken);
                     localStorage.setItem("refreshToken", refreshToken); 
                     console.log('valid password');
-                    navigate('/dashboard');
+                    navigate('/dashboard'); // INSTRUCTOR DASH
                 } else {
                     alert('Invalid password');
                 }
@@ -57,8 +57,11 @@ export default function Login() {
                     />
                 </div>
                 <button type="button" onClick={handleLogin}>
-                Log In
+                    Log In
                 </button>
+                <button type="button" onClick={() => {navigate("/register")}}>
+                    Register
+                </button>                
             </form>
         </div>
     );

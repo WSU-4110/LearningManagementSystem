@@ -3,6 +3,7 @@ import {AUTH_SERVER_URL} from '../constants';
 import http from '../http';
 import '../css/Register.css';
 
+// there should really be 2 registers, one for student one for instructor
 
 export default function Register() {
     const [email, setEmail] = useState('');
@@ -18,7 +19,7 @@ export default function Register() {
         };
         http.post(AUTH_SERVER_URL, student)
             .catch((err) => console.log(err));
-        window.location = '/login';
+        window.location = '/studentLogin';
     };
     
     return (
