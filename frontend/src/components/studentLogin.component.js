@@ -1,6 +1,6 @@
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
-import {AUTH_SERVER_URL} from '../constants';
+import {AUTH_SERVER_URL} from '../constants';   
 import http from '../http';
 import '../css/login.css';
 
@@ -14,7 +14,7 @@ export default function StudentLogin() {
             email: email,
             password: password
         };
-        http.post(AUTH_SERVER_URL + '/login', student)
+        http.post(AUTH_SERVER_URL + '/studentLogin', student)
             .then(res => {
                 if (res.data) {
                     const accessToken = res.data.accessToken;
@@ -22,7 +22,7 @@ export default function StudentLogin() {
                     localStorage.setItem("accessToken", accessToken);
                     localStorage.setItem("refreshToken", refreshToken); 
                     console.log('valid password');
-                    navigate('/dashboard'); // STUDENT DASH
+                    navigate('/studentDashboard'); // STUDENT DASH
                 } else {
                     alert('Invalid password');
                 }
@@ -59,7 +59,7 @@ export default function StudentLogin() {
                 <button type="button" onClick={handleLogin}>
                     Log In
                 </button>
-                <button type="button" onClick={() => {navigate("/register")}}>
+                <button type="button" onClick={() => {navigate("/studentRegister")}}>
                     Register
                 </button>                
             </form>

@@ -29,7 +29,7 @@ router.route('/:id').get(async (req, res) => {
 // [U] update a course by id (body should have desired copy of the course)
 router.route('/').patch(async (req, res) => {
     try {
-        let course = await Course.findById(req.body.id);
+        let course = await Course.findById(req.body.course._id);// FIX
         course.name = req.body.course.name;
         course.students = req.body.course.students;
         course.assignments = req.body.course.assignments;

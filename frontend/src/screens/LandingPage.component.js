@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/esm/Button'
 const LandingPage = () => {
 	const navigate = useNavigate();
 	return (
-		<div className="main">
+		<div className="container">
 			{/* <Container> */}
 				{/* <Row> */}
 					<div className="intro-text">

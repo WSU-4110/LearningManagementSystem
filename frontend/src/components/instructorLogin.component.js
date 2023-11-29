@@ -10,11 +10,11 @@ export default function InstructorLogin() {
     const navigate = useNavigate();
     
     function handleLogin() {
-        const student = {
+        const instructor = {
             email: email,
             password: password
         };
-        http.post(AUTH_SERVER_URL + '/login', student)
+        http.post(AUTH_SERVER_URL + '/instructorLogin', instructor)
             .then(res => {
                 if (res.data) {
                     const accessToken = res.data.accessToken;
@@ -22,7 +22,7 @@ export default function InstructorLogin() {
                     localStorage.setItem("accessToken", accessToken);
                     localStorage.setItem("refreshToken", refreshToken); 
                     console.log('valid password');
-                    navigate('/dashboard'); // INSTRUCTOR DASH
+                    navigate('/instructorDashboard'); // INSTRUCTOR DASH
                 } else {
                     alert('Invalid password');
                 }
@@ -59,7 +59,7 @@ export default function InstructorLogin() {
                 <button type="button" onClick={handleLogin}>
                     Log In
                 </button>
-                <button type="button" onClick={() => {navigate("/register")}}>
+                <button type="button" onClick={() => {navigate("/instructorRegister")}}>
                     Register
                 </button>                
             </form>

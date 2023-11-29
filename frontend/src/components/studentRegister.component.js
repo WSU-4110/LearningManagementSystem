@@ -5,7 +5,7 @@ import '../css/Register.css';
 
 // there should really be 2 registers, one for student one for instructor
 
-export default function Register() {
+export default function StudentRegister() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
@@ -184,9 +184,10 @@ export default function Register() {
             email: email,
             password: password,
             firstName: firstName,
-            lastName: lastName
+            lastName: lastName,
+            courses: []
         };
-        http.post(AUTH_SERVER_URL + '/student', student)
+        http.post(AUTH_SERVER_URL + '/student', student) // should be {student}
             .then(() => {
                 // Redirect to login after successful registration
                 window.location = '/studentLogin';

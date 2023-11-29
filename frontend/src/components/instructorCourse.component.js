@@ -1,6 +1,6 @@
 import {useParams} from 'react-router-dom';
 import {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {DATA_SERVER_URL} from '../constants';
 import http from '../http';
 function AssignmentPeak(props) {
@@ -12,7 +12,8 @@ function AssignmentPeak(props) {
         </div>
     );
 }
-export default function Course() {
+export default function InstructorCourse() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [assignments, setAssignments] = useState([]);
     useEffect(() => {
@@ -36,7 +37,13 @@ export default function Course() {
         }
         getAssignments();
     }, []);
-    return assignments.map(assignment => {
-        return <AssignmentPeak assignmentName={assignment.name} assignmentId={assignment._id} key={assignment._id}/>;
-    });
+    return (
+        <div>
+            <p>Create a new assignment: </p>
+            <button onClick={() => {navigate('/newAssignment/' + id)}}>new assignment</button>
+            {assignments.map(assignment => {
+                return <AssignmentPeak assignmentName={assignment.name} assignmentId={assignment._id} key={assignment._id}/>;
+            })}
+        </div>
+    );
 }

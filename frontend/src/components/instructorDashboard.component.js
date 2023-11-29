@@ -5,26 +5,26 @@ import http from '../http';
 function CoursePeak(props) {
     return (
         <div>
-            <Link to={"/course/" + props.courseId}>
+            <Link to={"/instructorCourse/" + props.courseId}>
                 <h2>{props.courseName}</h2>
             </Link>
         </div>
     );
 };
-export default function Dashboard() {
+export default function StudentDashboard() {
     const [courses, setCourses] = useState([]);
     useEffect(() => {
         async function getCourses() {
             try {
                 let response;
-                // get student id from auth server:
-                response = await http.get(DATA_SERVER_URL + "/students/id");
-                const student_id = response.data.id;
-                // get student's courses
+                // get instructor id from auth server:
+                response = await http.get(DATA_SERVER_URL + "/instructors/id");
+                const instructor_id = response.data.id;
+                // get instructor's courses
                 let accumulator_course_list = [];
-                response = await http.get(DATA_SERVER_URL + "/students/" + student_id);
-                let student = response.data.student;
-                let course_ids = student.courses;
+                response = await http.get(DATA_SERVER_URL + "/instructors/" + instructor_id);
+                let instructor = response.data.instructor;
+                let course_ids = instructor.courses;
                 for (let i = 0; i < course_ids.length; ++i) {
                     response = await http.get(DATA_SERVER_URL + "/courses/" + course_ids[i]);
                     let course = response.data.course;

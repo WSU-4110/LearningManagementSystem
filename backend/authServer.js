@@ -53,7 +53,7 @@ function generateAccessToken(payload) {
 
 // defining routes
 // this route is for creating a new student
-app.post('/student', async (req, res) => {
+app.post('/student', async (req, res) => { // CLEAN THIS UP
     try {
         // hash the password (the password is in the body of the request)
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -106,8 +106,8 @@ app.post('/logout', async (req, res) => {
     await RefreshToken.deleteOne({ token: req.body.token });
     res.sendStatus(204);
 });
-//  this route is for logging in
-app.post('/login', async (req, res) => {
+//  this route is for student login
+app.post('/studentLogin', async (req, res) => {
     try {
         const student = await Student.findOne({ email: req.body.email });
         if (student == null) {
@@ -128,6 +128,36 @@ app.post('/login', async (req, res) => {
             await RefreshToken(refreshTokenObj).save();
             // give the access token and the refresh token back
             res.json({ id: student._id, accessToken: accessToken, refreshToken: refreshToken });
+        } else {
+            res.send(false);
+        }
+    } catch(err) {
+        console.log("authServer is messed up");
+        res.status(500).json('error: ' + err);
+    }
+});
+// this route is for instructor login
+app.post('/instructorLogin', async (req, res) => {
+    try {
+        const instructor = await Instructor.findOne({ email: req.body.email });
+        if (instructor == null) {
+            res.status(400).json(`instructor with email: ${req.body.email} not found`); // return something to make frontend error handlign easy
+            return;
+        }
+        // compare hashes
+        if (await bcrypt.compare(req.body.password, instructor.password)) {
+            // create "payload" object that holds the email and _id of the user (instructor)
+            const payload = { email: req.body.email, _id: instructor._id };
+            // create access token and embed the payload in it
+            const accessToken = generateAccessToken(payload);
+            // create refresh token with payload embedded in it
+            const refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET);
+            // createa a resfresh token object
+            const refreshTokenObj = { token: refreshToken };
+            // put refresh token object in the database (so we remember that it is valid)
+            await RefreshToken(refreshTokenObj).save();
+            // give the access token and the refresh token back
+            res.json({ id: instructor._id, accessToken: accessToken, refreshToken: refreshToken });
         } else {
             res.send(false);
         }

@@ -9,8 +9,8 @@ export default function Assignment() {
     const [assignment, setAssignment] = useState();
     useEffect(() => {
         async function getAssignment() {
-            const rawAssignment = await http.get('http://localhost:5050/assignments/' + id);
-            setAssignment(rawAssignment.data);
+            let response = await http.get( DATA_SERVER_URL + '/assignments/' + id);
+            setAssignment(response.data.assignment);
         }
         getAssignment();
     }, []);

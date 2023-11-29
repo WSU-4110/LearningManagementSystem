@@ -5,11 +5,14 @@ const Assignment = require('../models/assignment.model');
 // [C] create an assignment
 router.route('/').post(async (req, res) => {
     try {
+        console.log("HIII");
+        console.log(Object.keys(req.body.assignment));
         const assignment = await Assignment({
             name: req.body.assignment.name,
             dueDate: req.body.assignment.dueDate,
             content: req.body.assignment.content
         }).save();
+        console.log("WORKING");
         res.status(200).json({message: 'assignment created', id: assignment._id});
     } catch(err) {
         res.status(400).json({message: 'error: ' + err});
