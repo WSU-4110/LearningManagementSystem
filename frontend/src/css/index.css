@@ -7,7 +7,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url('wall.png');
-  background-size:cover;
+  background-size: cover;
+  /* background-color: antiquewhite;
+  background-size: cover; */
   width: 1200px;
   height:600px;
   background-size: cover; /* or "contain" depending on what you want */

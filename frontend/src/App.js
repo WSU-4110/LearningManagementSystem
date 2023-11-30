@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './bootstrap.css';
 import StudentDashboard from './components/studentDashboard.component';
 import StudentCourse from './components/studentCourse.component';
 import InstructorCourse from './components/instructorCourse.component';
@@ -9,7 +8,6 @@ import Assignment from './components/assignment.component';
 // import Register from './components/register.component';
 import ProfilePage from './components/profilePage.component';
 import Footer from './components/Footer/Footer.component';
-import Header from './components/Header/Header.component';
 import Settings from './components/settings.component';
 // import InstructorLandingPage from './components/instructorLandingPage.component';
 // import StudentLandingPage from './components/studentLandingPage.component';
@@ -19,13 +17,14 @@ import LandingPage from './screens/LandingPage.component';
 
 import InstructorDashboard from './components/instructorDashboard.component';
 import NewAssignment from './components/newAssignment.component';
+import NewNav from './components/newNav/newNav.component';
 
 
 export default function App() {
     return (
-       <Router>
-            <Header />
-            <Routes>
+       <Router>                
+        <NewNav />
+            <Routes>            
                 <Route path = '/' element={<LandingPage/>} />
                 <Route path = '/instructorCourse/:id' element={<InstructorCourse/>} />
                 <Route path = '/studentCourse/:id' element={<StudentCourse/>} />
