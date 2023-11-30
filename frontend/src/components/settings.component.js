@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../css/settings.css';
+import '../css/index.css';
 
 export default function Settings() {
   const [email, setEmail] = useState('');
@@ -16,14 +17,16 @@ export default function Settings() {
       password: password,
       firstName: firstName,
       lastName: lastName,
-      notificationSound: notificationSound, // Include the notification sound setting in the request
+      notificationSound: notificationSound,
+      selectedColor: selectedColor, // Add selectedColor to the updated user object
     };
 
-    // Send a request to update the user's settings on the server
     axios
       .put('http://localhost:5050/users/update', updatedUser)
       .then((response) => {
-        // Handle success, e.g., show a success message
+        // Handle success, assuming the response contains updated user data
+        const updatedColor = response.data.selectedColor;
+        setSelectedColor(updatedColor);
       })
       .catch((error) => {
         // Handle error, e.g., display an error message
@@ -35,61 +38,33 @@ export default function Settings() {
     setSelectedColor(color);
   };
 
+  const updateSelectedColor = (color) => {
+    document.documentElement.style.setProperty('--selected-color', color); // Update CSS variable value
+    document.body.style.backgroundColor = color; // Change body background color
+  };
+
+  // Call updateSelectedColor function whenever selectedColor changes
+  useEffect(() => {
+    updateSelectedColor(selectedColor);
+  }, [selectedColor]);
+
   return (
     <div>
       <header>Settings</header>
-      <h1>Change Profile Info</h1>
-      <form>
-        <div>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="First Name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Last Name"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </div>
-        <button type="button" onClick={handleSaveChanges}>
-          Save Changes
-        </button>
-      </form>
+
       <h1>Change Website Preferences</h1>
       <form>
         <div>
-        <label>Website Color</label>
+          <label>Website Color</label>
           <input
             type="color"
             value={selectedColor}
             onChange={(e) => handleColorChange(e.target.value)}
           />
-          
         </div>
-        
+
         <div style={{ backgroundColor: selectedColor, width: '50px', height: '50px' }}>
-        {/* Display a preview of the selected color */}
+          {/* Display a preview of the selected color */}
         </div>
 
         <div>
