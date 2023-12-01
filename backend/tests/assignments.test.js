@@ -7,6 +7,8 @@ let test_assignment_id;
 //     data_server.stopServer();
 // });
 
+let test_assignment;
+
 describe('CRUD data_server/assignments/', () => {
     // CREATE
     it('create a new assignment', async () => {
@@ -20,9 +22,10 @@ describe('CRUD data_server/assignments/', () => {
                 }
             });
         expect(response.statusCode).toBe(200);
-        expect(response.body).toHaveProperty('id');
+        expect(response.body).toHaveProperty('_id');
         expect(response.body).toHaveProperty('message', 'assignment created');
-        test_assignment_id = response.body.id;
+        // save _id for get test
+        test_assignment_id = response.body._id;
     });
 
     // READ
@@ -35,19 +38,17 @@ describe('CRUD data_server/assignments/', () => {
         expect(response.body).toHaveProperty('assignment.name', 'test assignment');
         expect(response.body).toHaveProperty('assignment.dueDate', '1944-06-06T06:30:00.000Z');
         expect(response.body).toHaveProperty('assignment.content', 'test content');
+        // save assignment object for patch test
+        test_assignment = response.body.assignment;
     });
 
     // UPDATE
     it('update an assignment', async () => {
+        test_assignment.name = 'test assignment with an updated name wow';
         const response = await request(data_server)
             .patch('/assignments/')
             .send({
-                id: test_assignment_id,
-                assignment: {
-                    name: 'test assignment with an updated name wow',
-                    dueDate: '1944-06-06T06:30:00.000Z',
-                    content: 'test content'
-                }
+                assignment: test_assignment
             });
         expect(response.statusCode).toBe(200);
         expect(response.body).toHaveProperty('message', 'assignment updated');
@@ -58,7 +59,7 @@ describe('CRUD data_server/assignments/', () => {
         const response = await request(data_server)
             .delete('/assignments/')
             .send({
-                id: test_assignment_id
+                _id: test_assignment_id
             });
         expect(response.statusCode).toBe(200);
         expect(response.body).toHaveProperty('message', 'assignment deleted');

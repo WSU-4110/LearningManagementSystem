@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import {AUTH_SERVER_URL} from '../constants';
-import http from '../http';
-import '../css/Register.css';
+import {AUTH_SERVER_URL} from '../../constants';
+import http from '../../http';
+import '../../css/Register.css';
 
 // there should really be 2 registers, one for student one for instructor
 
-export default function InstructorRegister() {
+export default function StudentRegister() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
@@ -180,17 +180,17 @@ export default function InstructorRegister() {
             return;
         }
         
-        const instructor = {
+        const student = {
             email: email,
             password: password,
             firstName: firstName,
             lastName: lastName,
             courses: []
         };
-        http.post(AUTH_SERVER_URL + '/instructor', {instructor})
+        http.post(AUTH_SERVER_URL + '/student', student) // should be {student}
             .then(() => {
                 // Redirect to login after successful registration
-                window.location = '/instructorLogin';
+                window.location = '/studentLogin';
             })
             .catch((err) => {
                 // Handle API errors

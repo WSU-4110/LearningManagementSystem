@@ -7,6 +7,8 @@ let test_student_id;
 //     data_server.stopServer();
 // });
 
+let test_student;
+
 describe('CRUD data_server/students/', () => {
     // CREATE
     it('create a new student', async () => {
@@ -22,9 +24,10 @@ describe('CRUD data_server/students/', () => {
                 }
             });
         expect(response.statusCode).toBe(200);
-        expect(response.body).toHaveProperty('id');
+        expect(response.body).toHaveProperty('_id');
         expect(response.body).toHaveProperty('message', 'student created');
-        test_student_id = response.body.id;
+        // save test student id for get test
+        test_student_id = response.body._id;
     });
 
     // READ
@@ -39,21 +42,17 @@ describe('CRUD data_server/students/', () => {
         expect(response.body).toHaveProperty('student.firstName', 'john');
         expect(response.body).toHaveProperty('student.lastName', 'cena');
         expect(response.body).toHaveProperty('student.courses', []);
+        // save test student object for patch test
+        test_student = response.body.student;
     });
 
     // UPDATE
     it('update a student', async () => {
+        test_student.email = "doofus@gmail.com";
         const response = await request(data_server)
             .patch('/students/')
             .send({
-                id: test_student_id,
-                student: {
-                    email: "test@NEWemail.com",
-                    password: "skibidi",
-                    firstName: "john",
-                    lastName: "wayne",
-                    courses: ["6562eb9b156f809cccf086ce"]
-                }
+                student: test_student
             });
         expect(response.statusCode).toBe(200);
         expect(response.body).toHaveProperty('message', 'student updated');
@@ -64,7 +63,7 @@ describe('CRUD data_server/students/', () => {
         const response = await request(data_server)
             .delete('/students/')
             .send({
-                id: test_student_id
+                _id: test_student_id
             });
         expect(response.statusCode).toBe(200);
         expect(response.body).toHaveProperty('message', 'student deleted');

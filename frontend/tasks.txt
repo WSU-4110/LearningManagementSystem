@@ -1,0 +1,43 @@
+
+// DAVID
+
+instructor interface: grading papers, being able to access sumbissions, 
+student needs to be able to submit files
+student needs to view grades
+
+deployment
+
+// JACOB
+
+profile component (names) <- configure settings for notifications
+settings (styling & colors)
+
+// REI
+
+timeline component: times & dead lines for assignments for students
+messaging = email (ask gpt how to do it)
+
+// ADAM
+
+nav bar NOT SEE THRU, and only render when user is logged in
+
+// KIDD
+
+STYLING
+
+// HET
+
+course tabs -> grades and assignmnets <- submissions
+course(home) {
+    grades
+    assignmets
+}
+
+
+
+
+
+
+
+features that will never be implemented: 
+student-student messaging

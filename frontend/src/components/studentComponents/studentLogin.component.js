@@ -1,8 +1,8 @@
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
-import {AUTH_SERVER_URL} from '../constants';   
-import http from '../http';
-import '../css/login.css';
+import {AUTH_SERVER_URL} from '../../constants';   
+import http from '../../http';
+import '../../css/login.css';
 
 export default function StudentLogin() {
     const [email, setEmail] = useState('');
@@ -22,12 +22,12 @@ export default function StudentLogin() {
                     localStorage.setItem("accessToken", accessToken);
                     localStorage.setItem("refreshToken", refreshToken); 
                     console.log('valid password');
-                    navigate('/studentDashboard'); // STUDENT DASH
+                    navigate('/studentDashboard');
                 } else {
                     alert('Invalid password');
                 }
             })
-            .catch(err => { console.log(err) });
+            .catch(err => {console.log(err)});
     };
     
     return (

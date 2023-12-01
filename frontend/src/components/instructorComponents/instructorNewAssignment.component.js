@@ -1,14 +1,14 @@
 import {useNavigate, useParams} from 'react-router-dom';
 import {useState} from 'react';
-import {AUTH_SERVER_URL, DATA_SERVER_URL} from '../constants';   
-import http from '../http';
+import {AUTH_SERVER_URL, DATA_SERVER_URL} from '../../constants';   
+import http from '../../http';
 
-export default function NewAssignment() {
+export default function InstructorNewAssignment() {
     const [name, setName] = useState('');
     const [due_date, setDueDate] = useState('');
     const [content, setContent] = useState('');
     const navigate = useNavigate();
-    const { id } = useParams(); //course id
+    const { course_id } = useParams(); //course id
     
     async function handleCreate() {
         const assignment = {
@@ -17,8 +17,8 @@ export default function NewAssignment() {
             content: content
         }
         let response = await http.post(DATA_SERVER_URL + '/assignments', {assignment});
-        let assignmnet_id = response.data.id;
-        response = await http.get(DATA_SERVER_URL + '/courses/' + id);
+        let assignmnet_id = response.data._id;
+        response = await http.get(DATA_SERVER_URL + '/courses/' + course_id);
         let course = response.data.course;
         course.assignments.push(assignmnet_id);
         await http.patch(DATA_SERVER_URL + '/courses', {course});

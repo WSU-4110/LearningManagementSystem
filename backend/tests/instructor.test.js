@@ -3,6 +3,8 @@ const data_server = require('../server')(5003);
 
 let test_instructor_id;
 
+let test_instructor;
+
 describe('CRUD data_server/instructors/', () => {
     // CREATE
     it('create a new instructor', async () => {
@@ -18,9 +20,10 @@ describe('CRUD data_server/instructors/', () => {
                 }
             });
         expect(response.statusCode).toBe(200);
-        expect(response.body).toHaveProperty('id');
+        expect(response.body).toHaveProperty('_id');
         expect(response.body).toHaveProperty('message', 'instructor created');
-        test_instructor_id = response.body.id;
+        // save test instructor id for get test
+        test_instructor_id = response.body._id;
     });
 
     // READ
@@ -35,21 +38,17 @@ describe('CRUD data_server/instructors/', () => {
         expect(response.body).toHaveProperty('instructor.firstName', 'john');
         expect(response.body).toHaveProperty('instructor.lastName', 'cena');
         expect(response.body).toHaveProperty('instructor.courses', []);
+        // save test instructor object for patch test
+        test_instructor = response.body.instructor;
     });
 
     // UPDATE
     it('update an instructor', async () => {
+        test_instructor.firstName = "funny updated name";
         const response = await request(data_server)
             .patch('/instructors/')
             .send({
-                id: test_instructor_id,
-                instructor: {
-                    email: "test@NEWemail.com",
-                    password: "skibidi",
-                    firstName: "john",
-                    lastName: "wayne",
-                    courses: ["6562eb9b156f809cccf086ce"]
-                }
+                instructor: test_instructor
             });
         expect(response.statusCode).toBe(200);
         expect(response.body).toHaveProperty('message', 'instructor updated');
@@ -60,7 +59,7 @@ describe('CRUD data_server/instructors/', () => {
         const response = await request(data_server)
             .delete('/instructors/')
             .send({
-                id: test_instructor_id
+                _id: test_instructor_id
             });
         expect(response.statusCode).toBe(200);
         expect(response.body).toHaveProperty('message', 'instructor deleted');

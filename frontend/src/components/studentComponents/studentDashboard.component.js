@@ -1,11 +1,11 @@
 import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {DATA_SERVER_URL} from '../constants';
-import http from '../http';
+import {DATA_SERVER_URL} from '../../constants';
+import http from '../../http';
 function CoursePeak(props) {
     return (
         <div>
-            <Link to={"/instructorCourse/" + props.courseId}>
+            <Link to={"/studentCourse/" + props.courseId}>
                 <h2>{props.courseName}</h2>
             </Link>
         </div>
@@ -17,14 +17,14 @@ export default function StudentDashboard() {
         async function getCourses() {
             try {
                 let response;
-                // get instructor id from auth server:
-                response = await http.get(DATA_SERVER_URL + "/instructors/id");
-                const instructor_id = response.data.id;
-                // get instructor's courses
+                // get student id from auth server:
+                response = await http.get(DATA_SERVER_URL + "/students/_id");
+                const student_id = response.data._id;
+                // get student's courses
                 let accumulator_course_list = [];
-                response = await http.get(DATA_SERVER_URL + "/instructors/" + instructor_id);
-                let instructor = response.data.instructor;
-                let course_ids = instructor.courses;
+                response = await http.get(DATA_SERVER_URL + "/students/" + student_id);
+                let student = response.data.student;
+                let course_ids = student.courses;
                 for (let i = 0; i < course_ids.length; ++i) {
                     response = await http.get(DATA_SERVER_URL + "/courses/" + course_ids[i]);
                     let course = response.data.course;

@@ -5,24 +5,17 @@ const Assignment = require('../models/assignment.model');
 // [C] create an assignment
 router.route('/').post(async (req, res) => {
     try {
-        console.log("HIII");
-        console.log(Object.keys(req.body.assignment));
-        const assignment = await Assignment({
-            name: req.body.assignment.name,
-            dueDate: req.body.assignment.dueDate,
-            content: req.body.assignment.content
-        }).save();
-        console.log("WORKING");
-        res.status(200).json({message: 'assignment created', id: assignment._id});
+        const assignment = await Assignment(req.body.assignment).save();
+        res.status(200).json({message: 'assignment created', _id: assignment._id});
     } catch(err) {
         res.status(400).json({message: 'error: ' + err});
     }
 });
 
 // [R] get assignment by id
-router.route('/:id').get(async (req, res) => {
+router.route('/:_id').get(async (req, res) => {
     try {
-        let assignment = await Assignment.findById(req.params.id);
+        let assignment = await Assignment.findById(req.params._id);
         res.status(200).json({message: 'assignment read', assignment});
     } catch(err) {
         res.status(400).json({message: 'error: ' + err});
@@ -32,7 +25,7 @@ router.route('/:id').get(async (req, res) => {
 // [U] update an assignment by id (body should have desired copy of the assignment)
 router.route('/').patch(async (req, res) => {
     try {
-        let assignment = await Assignment.findById(req.body.id);
+        let assignment = await Assignment.findById(req.body.assignment._id);
         assignment.name = req.body.assignment.name;
         assignment.dueDate = req.body.assignment.dueDate;
         assignment.content = req.body.assignment.content;
@@ -46,7 +39,7 @@ router.route('/').patch(async (req, res) => {
 // [D] delete an assignment by id
 router.route('/').delete(async (req, res) => {
     try {
-        await Assignment.deleteOne({_id: req.body.id});
+        await Assignment.deleteOne({_id: req.body._id});
         res.status(200).json({message: 'assignment deleted'});
     } catch(err) {
         res.status(400).json({message: 'error: ' + err});

@@ -1,8 +1,8 @@
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
-import {AUTH_SERVER_URL} from '../constants';
-import http from '../http';
-import '../css/login.css';
+import {AUTH_SERVER_URL} from '../../constants';
+import http from '../../http';
+import '../../css/login.css';
 
 export default function InstructorLogin() {
     const [email, setEmail] = useState('');

@@ -5,11 +5,11 @@ import http from '../http';
 import '../css/assignment.css';
 
 export default function Assignment() {
-    const { id } = useParams();
+    const {assignment_id} = useParams();
     const [assignment, setAssignment] = useState();
     useEffect(() => {
         async function getAssignment() {
-            let response = await http.get( DATA_SERVER_URL + '/assignments/' + id);
+            let response = await http.get( DATA_SERVER_URL + '/assignments/' + assignment_id);
             setAssignment(response.data.assignment);
         }
         getAssignment();
