@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 // student-specific components
 import StudentDashboard from './components/studentComponents/studentDashboard.component';
@@ -20,11 +20,35 @@ import Footer from './components/Footer/Footer.component';
 import Settings from './components/settings.component';
 import LandingPage from './screens/LandingPage.component';
 import NewNav from './components/newNav/newNav.component';
+import { useEffect } from 'react';
 
+
+
+
+//App Function
 export default function App() {
     return (
        <Router>                
-            <NewNav />
+            <AppContent />
+        </Router>
+    );
+}
+
+
+
+//AppContent function for Routes. Allows ability to render conditionally.
+function AppContent() {
+    const location = useLocation();
+
+    // Define an array of paths where you want to hide the NewNav component
+    const pathsToHideNewNav = ['/', '/studentLogin', '/instructorLogin', '/studentRegister', '/instructorRegister'];
+
+    // Check if the current path is in the pathsToHideNewNav array
+    const shouldHideNewNav = pathsToHideNewNav.includes(location.pathname);
+
+    return (
+        <>
+            {!shouldHideNewNav && <NewNav />}
             <Routes>
                 <Route path = '/' element={<LandingPage/>} />
                 <Route path = '/instructorCourse/:course_id' element={<InstructorCourse/>} />
@@ -38,9 +62,9 @@ export default function App() {
                 <Route path = '/assignment/:assignment_id' element={<Assignment/>} />
                 <Route path = '/profilepage' element={<ProfilePage/>} />
                 <Route path = '/settings' element={<Settings/>} />
-                <Route path = '/instructorNewAssignment/:course_id' element={<InstructorNewAssignment/>} />
+                <Route path = '/instructorNewAssignment/:course_id' element={<InstructorNewAssignment/>} />\
             </Routes>
             <Footer />
-        </Router>
+        </>
     );
 }
