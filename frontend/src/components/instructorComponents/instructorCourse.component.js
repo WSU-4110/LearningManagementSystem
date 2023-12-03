@@ -6,7 +6,7 @@ import http from '../../http';
 function AssignmentPeak(props) {
     return (
         <div>
-            <Link to={"/assignment/" + props.assignmentId}>
+            <Link to={"/instructorAssignment/" + props.assignmentId}>
                 <h2>{props.assignmentName}</h2>
             </Link>
         </div>
