@@ -71,36 +71,3 @@ function AppContent() {
         </>
     );
 }
-
-// return (
-//     <>
-//         {!shouldHideNewNav && <NewNav />}
-//         <Routes>
-//             <Route path = '/' element={<LandingPage/>} />
-//             <Route path = '/instructorCourse/:course_id' element={<InstructorCourse/>} />
-//             <Route path = '/studentCourse/:course_id' element={<StudentCourse/>} />
-// >>>>>>> febba3e3b85a6f27a05c06f9bd82ad5670b55667
-//             <Route path = '/studentLogin' element={<StudentLogin/>} />
-//             <Route path = '/studentRegister' element={<StudentRegister/>} />
-//             <Route path = '/studentDashboard' element={<StudentDashboard/>} />
-//             <Route path = '/studentCourse/:course_id' element={<StudentCourse/>} />
-//             <Route path = '/studentAssignment/:assignment_id' element={<StudentAssignment/>} />
-
-//             <Route path = '/instructorCourse/:course_id' element={<InstructorCourse/>} />
-//             <Route path = '/instructorRegister' element={<InstructorRegister/>} />
-//             <Route path = '/instructorDashboard' element={<InstructorDashboard/>} />
-//             <Route path = '/instructorNewAssignment/:course_id' element={<InstructorNewAssignment/>} />
-//             <Route path = '/instructorAssignment/:assignment_id' element={<InstructorAssignment/>} />
-
-//             <Route path = '/' element={<LandingPage/>} />
-//             <Route path = '/instructorLogin' element={<InstructorLogin/>} />
-//             <Route path = '/profilepage' element={<ProfilePage/>} />
-//             <Route path = '/settings' element={<Settings/>} />
-// <<<<<<< HEAD
-// =======
-//             <Route path = '/instructorNewAssignment/:course_id' element={<InstructorNewAssignment/>} />\
-// >>>>>>> febba3e3b85a6f27a05c06f9bd82ad5670b55667
-//         </Routes>
-//         <Footer />
-//     </>
-// );
