@@ -6,11 +6,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-size: cover;
-  background-size: cover;
-  width: 1200px;
-  height:600px;
-  background-size: cover;
+  /* background-size: cover;
+  background-size: cover; */
+  /* width: 1200px;
+  height:600px; */
+  /* background-size: cover; */
   background-position: center center;
   background-repeat: no-repeat;
   text-align:center;
