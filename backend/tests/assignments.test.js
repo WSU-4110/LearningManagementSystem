@@ -18,7 +18,9 @@ describe('CRUD data_server/assignments/', () => {
                 assignment: {
                     name: 'test assignment',
                     dueDate: '1944-06-06T06:30:00.000Z',
-                    content: 'test content'
+                    content: 'test content',
+                    max_points: 100,
+                    submissions: []
                 }
             });
         expect(response.statusCode).toBe(200);

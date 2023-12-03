@@ -15,6 +15,8 @@ const express = require('express');
 const cors = require('cors');
 // dotenv is a package that enables us to read the .env file and use the values from there
 require('dotenv').config();
+// package to change max payload size
+const bodyParser = require('body-parser');
 
 
 
@@ -47,6 +49,9 @@ app.use(express.json());
 if (process.env.USE_TOKEN_AUTH === 'true') {
     app.use(authenticateToken);
 }
+// increase the payload size limit to 20MB (adjust as needed)
+app.use(bodyParser.json({ limit: '20mb' }));
+app.use(bodyParser.urlencoded({ limit: '20mb', extended: true }));
 
 
 
@@ -63,10 +68,12 @@ mongoose.connection.once('open', () => {
 
 
 // import our routers and give them to our express app
+const submissionRouter = require("./routes/submissions");
 const assignmentRouter = require('./routes/assignments');
 const instructorRouter = require('./routes/instructors');
 const studentsRouter = require('./routes/students');
 const coursesRouter = require('./routes/courses');
+app.use("/submissions", submissionRouter);
 app.use('/assignments', assignmentRouter);
 app.use('/instructors', instructorRouter);
 app.use('/students', studentsRouter);

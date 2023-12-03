@@ -29,6 +29,8 @@ router.route('/').patch(async (req, res) => {
         assignment.name = req.body.assignment.name;
         assignment.dueDate = req.body.assignment.dueDate;
         assignment.content = req.body.assignment.content;
+        assignment.max_points = req.body.assignment.max_points;
+        assignment.submissions = req.body.assignment.submissions;
         await assignment.save();
         res.status(200).json({message: 'assignment updated'});
     } catch(err) {
