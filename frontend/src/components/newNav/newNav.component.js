@@ -6,6 +6,7 @@ import http from '../../http';
 import logoImage from '../../css/logoTransp.png'
 
 
+
 // async function handleLogout() {
 //     await http.post('http://localhost:4000/logout', {token: localStorage.getItem('refreshToken')});
 // }
@@ -41,7 +42,7 @@ class newNav extends Component{
                         )
                     })}
 
-                    {/* <li><Link onClick={handleLogout}>Logout</Link></li> */}
+                    {/* <li className='NavBar'><Link onClick={handleLogout}>Logout</Link></li> */}
                 </ul>
             </nav>
         )
