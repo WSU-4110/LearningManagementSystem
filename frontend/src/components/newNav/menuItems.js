@@ -1,14 +1,16 @@
 import http from "../../http";
+import {DATA_SERVER_URL} from '../../constants';
 
 
-// async function handleLogout() {
-//     await http.post('http://localhost:4000/logout', {token: localStorage.getItem('refreshToken')});
-// }
+
+async function handleLogout() {
+    await http.post(DATA_SERVER_URL, {token: localStorage.getItem('refreshToken')});
+}
 
 export const menuItems = [
     {
         title : "Dashboard",
-        url : "/dashboard",
+        url : "/studentDashboard",
         cName : "nav-links",
         icon : "fa-solid fa-house"
     },
@@ -24,12 +26,12 @@ export const menuItems = [
         cName : "nav-links",
         icon : ""
     },
-    // {
-    //     title : "Logout",
-    //     onclick : {handleLogout},
-    //     cName : "nav-links",
-    //     icon : ""
-    // },
+    {
+        title : "Logout",
+        onclick : {handleLogout},
+        cName : "nav-links",
+        icon : ""
+    },
     
     
 ]
