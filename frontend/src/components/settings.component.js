@@ -4,20 +4,11 @@ import '../css/settings.css';
 import '../css/index.css';
 
 export default function Settings() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
   const [selectedColor, setSelectedColor] = useState('#ffffff'); // Initialize with a default color
   const [notificationSound, setNotificationSound] = useState(true); // Initialize with notification sound on
 
   const handleSaveChanges = () => {
     const updatedUser = {
-      email: email,
-      password: password,
-      firstName: firstName,
-      lastName: lastName,
-      notificationSound: notificationSound,
       selectedColor: selectedColor, // Add selectedColor to the updated user object
     };
 
@@ -41,6 +32,7 @@ export default function Settings() {
   const updateSelectedColor = (color) => {
     document.documentElement.style.setProperty('--selected-color', color); // Update CSS variable value
     document.body.style.backgroundColor = color; // Change body background color
+    localStorage.setItem("backgroundColor",color);
   };
 
   // Call updateSelectedColor function whenever selectedColor changes
@@ -50,9 +42,9 @@ export default function Settings() {
 
   return (
     <div>
-      <header>Settings</header>
+      <h1>Settings</h1>
 
-      <h1>Change Website Preferences</h1>
+      <h2>Change Website Preferences</h2>
       <form>
         <div>
           <label>Website Color</label>

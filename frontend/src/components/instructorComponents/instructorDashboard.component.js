@@ -2,14 +2,18 @@ import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {DATA_SERVER_URL} from '../../constants';
 import http from '../../http';
+import "../../"
+import '../../css/instructorDash.css';
+
+
 function CoursePeak(props) {
-    return (
-        <div>
-            <Link to={"/instructorCourse/" + props.courseId}>
-                <h2>{props.courseName}</h2>
-            </Link>
-        </div>
-    );
+  return (
+    <div className="CoursePeakContainer">
+      <Link to={"/instructorCourse/" + props.courseId}>
+        <h2>{props.courseName}</h2>
+      </Link>
+    </div>
+  );
 };
 export default function StudentDashboard() {
     const [courses, setCourses] = useState([]);
