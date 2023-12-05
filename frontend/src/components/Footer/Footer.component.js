@@ -9,7 +9,7 @@ const Footer = () => {
         {/* Ensure that this content wrapper encapsulates all your page content */}
       </div>
       <div className="footer">
-        <p className=''>Copyright &copy; LMS</p>
+        <p className=''>Team 3 Copyright &copy; 2023 LMS  - All rights reserved</p>
       </div>
     </>
   )
