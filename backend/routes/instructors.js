@@ -60,4 +60,17 @@ router.route('/').delete(async (req, res) => {
     }
 });
 
+router.route('/bycourse/:courseId').get(async (req, res) => {
+    try {
+        const instructor = await Instructor.findOne({ courses: req.params.courseId });
+        if (!instructor) {
+            return res.status(404).json({message: 'Instructor not found for this course'});
+        }
+        res.status(200).json({email: instructor.email});
+    } catch (err) {
+        res.status(500).json({message: 'error: ' + err});
+    }
+});
+
+
 module.exports = router;

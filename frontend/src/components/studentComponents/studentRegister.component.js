@@ -231,7 +231,7 @@ export default function StudentRegister() {
                         value={password}
                         onChange={handleInputChange}
                     />
-                                    <i
+                <i
                         className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
                         onClick={handleTogglePassword}
                 ></i>
