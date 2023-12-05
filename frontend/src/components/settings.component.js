@@ -41,6 +41,7 @@ export default function Settings() {
   const updateSelectedColor = (color) => {
     document.documentElement.style.setProperty('--selected-color', color); // Update CSS variable value
     document.body.style.backgroundColor = color; // Change body background color
+    localStorage.setItem("backgroundColor",color);
   };
 
   // Call updateSelectedColor function whenever selectedColor changes
