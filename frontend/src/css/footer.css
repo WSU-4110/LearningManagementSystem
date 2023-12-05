@@ -1,5 +1,6 @@
 .footer {
-    background-color: rgb(123, 166, 187);
+    background: #000;
+    color: gray;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,6 +9,7 @@
     left: 0;
     width: 100%;
     height: 2.5rem;
+    font-size: .8em;
 }
 
 .footer > p {
