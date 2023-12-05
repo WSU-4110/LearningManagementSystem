@@ -8,6 +8,7 @@ import '../../css/Register.css';
 export default function InstructorRegister() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [error, setError] = useState('');
@@ -34,7 +35,12 @@ export default function InstructorRegister() {
                 break;
         }
     }
-
+    //show password function
+    function handleTogglePassword()
+    {
+        setShowPassword(!showPassword);
+    }
+    
     function handleRegister() {
 
         // Simple email validation
@@ -219,13 +225,17 @@ export default function InstructorRegister() {
                     <p>Password</p>
                     <i className="fas fa-lock"></i>
                     <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        className="inputfield"
-                        value={password}
-                        onChange={handleInputChange}
+                         type={showPassword ? 'text' : 'password'}
+                         name="password"
+                         placeholder="Password"
+                         className="inputfield"
+                         value={password}
+                         onChange={handleInputChange}
                     />
+                <i
+                         className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
+                         onClick={handleTogglePassword}
+                ></i>
                 </div>
                 <div className="register_firstname">
                     <p>First Name</p>
