@@ -8,21 +8,30 @@
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.course-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
 }
 
 .course:hover {
-    background-color: rgb(126, 136, 192);
+    background-color: #98c7e7;
 }
 
 .course:active {
-    background-color: rgb(180, 203, 255);;
+    background-color: #bee5ff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-h1 {
+#title {
     padding: 10px 5px;
     background-color: #fff;
     color: #000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25); 
 }
