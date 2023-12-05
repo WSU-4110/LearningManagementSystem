@@ -38,7 +38,7 @@ router.route('/:_id').get(async (req, res) => {
 router.route('/').patch(async (req, res) => {
     try {
         let student = await Student.findById(req.body.student._id);
-        student.email = req.body.student.name;
+        student.email = req.body.student.email;
         student.password = req.body.student.password;
         student.firstName = req.body.student.firstName;
         student.lastName = req.body.student.lastName;

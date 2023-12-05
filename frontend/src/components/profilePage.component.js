@@ -1,97 +1,78 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../css/profilePage.css';
-import { Link } from 'react-router-dom';
 import http from '../http';
-//let Student = require('..../models/student.model');
-
+import { DATA_SERVER_URL } from "../constants";
 
 export default function ProfilePage() {
+    const [student, setStudent] = useState(null);
+    const [new_first_name, setNewFirstName] = useState('');
+    const [new_last_name, setNewLastName] = useState('');
+    const [new_email, setNewEmail] = useState('');
 
-    const [user, setUser] = useState({})
-
-    useEffect(()=> {  
-        // here we get the data by requesting data from this link
-        // to our nodejs server
-        const currentStudentId = getCurrentStudentId();
-
-        http.get('http://localhost:5050/students/')
-        .then((res)=> setUser(res.data));
+    useEffect(() => {
+        async function getStudent() {
+            try {
+                let response = await http.get(DATA_SERVER_URL + "/students/" + "_id");
+                let student_id = response.data._id;
+                response = await http.get(DATA_SERVER_URL + "/students/" + student_id);
+                setStudent(response.data.student);
+                setNewFirstName(response.data.student.firstName);
+                setNewLastName(response.data.student.lastName);
+                setNewEmail(response.data.student.email);
+            } catch (error) {
+                console.log("Error fetching student", error);
+            }
+        }
+        getStudent();
     }, []);
 
-    const getCurrentStudentId = () => {
-        
-        // Get it from the authentication token or another source
-        return '123'; // Replace with the actual ID
-    };
+    async function updateStudent() {
+        try {
+            let response = await http.get(DATA_SERVER_URL + "/students/" + student._id);
+            let student_obj = response.data.student;
 
-    // let firstNames = list.map((Student)=>{
-    //     return (
-    //         <li key={Student.firstName}>{Student.firstName}</li>
-    //     )
+            student_obj.firstName = new_first_name;
+            student_obj.lastName = new_last_name;
+            student_obj.email = new_email;
 
-    // });
+            await http.patch(DATA_SERVER_URL + "/students/", { student: student_obj });
+            //window.location.reload();
+        } catch (error) {
+            console.error("Error updating student", error);
+        }
+    }
 
-    // let lastNames = list.map((Student)=>{
-    //     return (
-    //         <li key={Student.lastName}>{Student.lastName}</li>
-    //     )
-
-    // });
-
-    return(
-        <div>
+    return (
+        <div className="container">
             <h3>User Profile</h3>
-            <p>First Name: {user.firstName}</p>
-            <p>Last Name: {user.lastName}</p>
+            <label>
+                First Name:
+                <input
+                    type="inputField"
+                    name="firstName"
+                    value={new_first_name}
+                    onChange={(e) => setNewFirstName(e.target.value)}
+                />
+            </label>
+            <label>
+                Last Name:
+                <input
+                    type="inputField"
+                    name="lastName"
+                    value={new_last_name}
+                    onChange={(e) => setNewLastName(e.target.value)}
+                />
+            </label>
+            <label>
+                Email:
+                <input
+                    type="inputField"
+                    name="email"
+                    value={new_email}
+                    onChange={(e) => setNewEmail(e.target.value)}
+                />
+            </label>
+            <button className='button' onClick={updateStudent}>Update Profile</button>
         </div>
     );
-
-    /*constructor(props) {
-        super(props);
-
-        this.onChangeFirstName = this.onChangeFirstName.bind(this);
-        this.onChangeLastName = this.onChangeLastName.bind(this);
-        this.onChangeEmail = this.onChangeEmail.bind(this);
-
-        this.state = {
-            firstName: '',
-            lastName: '',
-            email: '',
-        };
-    }
-
-    onChangeFirstName(e) {
-        this.setState({
-            firstname: e.target.value
-        });
-    }
-
-    onChangeLastName(e) {
-        this.setState({
-            lastname: e.target.value
-        });
-    }
-
-    onChangeEmail(e) {
-        this.setState({
-            email: e.target.value
-        });
-    }*/
-
-    /*onSubmit(e) {
-        e.preventDefault(); // prevent usual html form behavior
-
-        const student = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email,
-        };
-
-        console.log(student)
-        // this is where data gets submitted to db
-        axios.post('http://localhost:3000/profilePage/update/'+this.props.match.params.id, student)
-            .then(res => console.log(res.data));
-
-        window.location = "/" // take user back to homepage
-    }*/
 }
