@@ -7,8 +7,14 @@ import '../../css/login.css';
 export default function InstructorLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     
+    function handleTogglePassword() {
+        setShowPassword(!showPassword);
+    }
+
+
     function handleLogin() {
         const instructor = {
             email: email,
@@ -47,14 +53,20 @@ export default function InstructorLogin() {
                 </div>
                 <div className="login_password">   
                     <p>Password</p>
-                    <i className="fas fa-lock"></i>
-                    <input
-                        type="password"
-                        placeholder="Type your password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="password_input"
-                    />
+                    <div className="container-password">
+                        <i className="fas fa-lock"></i>
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            placeholder="Type your password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="password_input"
+                        />
+                        <i
+                            className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
+                            onClick={handleTogglePassword}
+                        ></i>
+                    </div>
                 </div>
                 <div className="container-button">
                     <button type="button" onClick={handleLogin}>
