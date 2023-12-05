@@ -4,24 +4,11 @@ h3 {
     border: 1px solid #ddd;
     border-radius: 5px;
     text-align: center;
-    color: #fff; /* Set text color to white for better contrast */
-    font-size: 1.5em; /* Adjust font size for readability */
-    margin-bottom: 20px; /* Add some spacing at the bottom for visual appeal */
-    /* font-family: 'Your Preferred Font', sans-serif; Use a professional font
-    text-transform: uppercase; Convert text to uppercase for a formal look */
+    color: #fff; 
+    font-size: 1.5em;
+    margin-bottom: 20px; 
+
 }
-
-  div
-  { 
-     overflow: hidden;
-  }
-  ol {
-    list-style: decimal inside;
-    padding-left: 20px;  
-        text-align: left;
-        list-style-type: circle;
-
-  }
 
   .button {
     background-color: rgb(106, 169, 200);
@@ -59,12 +46,3 @@ h3 {
     transition: .2s;
     outline: none;
 }
-p{
-    background-color:rgb(196, 216, 255);
-    border-radius: 5px;
-    margin-bottom: 10px;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
-
