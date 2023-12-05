@@ -18,7 +18,7 @@ require('dotenv').config();
 // package to change max payload size
 const bodyParser = require('body-parser');
 
-
+const path = require('path');
 
 // creating a function (that will be used as a middleware) to authenticate tokens
 function authenticateToken(req, res, next) {
@@ -39,7 +39,8 @@ const app = express();
 // define port variable
 const port = 5050;
 
-
+// Serve files from the 'uploads' directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // telling our express app to use the following middleware:
 app.use(cors());

@@ -34,7 +34,7 @@ class newNav extends Component{
                 </div>
 
                 <ul className={this.state.clicked ? "nav-menu active" : "nav-menu"}>
-                    {menuItems.map((item,index) =>{
+                    {menuItems.map((item,index) => {
                         return(
                             <li key={index}>
                                 <Link className={item.cName} to={item.url}><i className={item.icon}></i>{item.title}</Link>

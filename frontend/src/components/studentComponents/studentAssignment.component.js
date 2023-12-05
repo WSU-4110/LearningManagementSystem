@@ -8,11 +8,27 @@ export default function StudentAssignment() {
     const {assignment_id} = useParams();
     const [assignment, setAssignment] = useState();
     const [file, setFile] = useState(null);
+    const [submittedFlag, setSubmittedFlag] = useState("");
 
     useEffect(() => {
         async function getAssignment() {
             let response = await http.get(DATA_SERVER_URL + '/assignments/' + assignment_id);
-            setAssignment(response.data.assignment);
+            let assignment_obj = response.data.assignment;
+            setAssignment(assignment_obj);
+
+            response = await http.get(DATA_SERVER_URL + "/students/" + "_id");
+            let student_id = response.data._id;
+
+            for (let i = 0; i < assignment_obj.submissions.length; ++i) {
+                response = await http.get(DATA_SERVER_URL + "/submissions/" + assignment_obj.submissions[i]);
+                if (response === null) {
+                    console.log("submission id doesnt have submission object associated with it");
+                    continue;
+                }
+                if (response.data.submission.student_id === student_id) {
+                    setSubmittedFlag("Submitted!");
+                }
+            }
         }
         getAssignment();
     }, []);
@@ -80,6 +96,7 @@ export default function StudentAssignment() {
             <p>{assignment && assignment.content}</p>
             <input type="file" accept="application/pdf" onChange={handleFileChange} />
             <button className="small-btn" onClick={handleUpload}>Submit</button>
+            <p>{submittedFlag}</p>
         </div>
     );
 }
