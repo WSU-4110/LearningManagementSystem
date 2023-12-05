@@ -21,9 +21,9 @@ body {
     background-color: #fff;
     border: 1px solid #ccc;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width:auto;
   }
 
   .login_username {

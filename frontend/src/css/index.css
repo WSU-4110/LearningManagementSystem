@@ -17,10 +17,11 @@ body {
   margin:auto;
   padding:0;
   --selected-color: rgb(24, 58, 210) !important; 
-  height: fit-content;
 
 }
-
+div{
+  width: fit-content;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
