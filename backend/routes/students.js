@@ -37,6 +37,7 @@ router.route('/:_id').get(async (req, res) => {
 // [U] update a student by id (body should have desired copy of the student)
 router.route('/').patch(async (req, res) => {
     try {
+        console.log("Received PATCH request", req.body);
         let student = await Student.findById(req.body.student._id);
         student.email = req.body.student.email;
         student.password = req.body.student.password;
@@ -46,7 +47,7 @@ router.route('/').patch(async (req, res) => {
         await student.save();
         res.status(200).json({message: 'student updated'});
     } catch(err) {
-        res.status(400).json({message: 'error: ' + err});
+        res.status(400).json({message: 'error from route: ' + err});
     }
 });
 

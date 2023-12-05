@@ -45,7 +45,10 @@ function AppContent() {
 
     // Check if the current path is in the pathsToHideNewNav array
     const shouldHideNewNav = pathsToHideNewNav.includes(location.pathname);
-
+    const color=localStorage.getItem("backgroundColor");
+    document.documentElement.style.setProperty('--selected-color', color); // Update CSS variable value
+    document.body.style.backgroundColor = color; // Change body background color
+    
     return (
         <>
             {!shouldHideNewNav && <NewNav />}

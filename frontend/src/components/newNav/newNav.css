@@ -1,9 +1,10 @@
 .NavbarItems{
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 30px;
-    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .25);
+    box-shadow: 2px 1px 3px 0 rgba(0, 0, 0, 1);
     width: 95%;
     height: 80px;
     border-radius: 13px;
@@ -21,9 +22,7 @@
 }
 
 .nav-menu{
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-gap: 5px;
+    display: flex;
     list-style: none;
     align-items: center;
 }
