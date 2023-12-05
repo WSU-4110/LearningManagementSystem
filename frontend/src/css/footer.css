@@ -1,0 +1,19 @@
+.footer {
+    background-color: rgb(123, 166, 187);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2.5rem;
+}
+
+.footer > p {
+    margin-top: 1em;
+}
+.content-wrapper {
+    padding-bottom: 60px; /* Adjust this value to match the height of your footer */
+    /* Add any other styles as needed */
+  }

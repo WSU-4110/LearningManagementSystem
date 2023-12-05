@@ -1,18 +1,20 @@
-import '../css/login.css';
-import { useNavigate} from 'react-router-dom';
-import React, { useState } from 'react';
-import http from '../http';
-export default function Login() {
-    //const navigate = useNavigate();
+import {useNavigate} from 'react-router-dom';
+import {useState} from 'react';
+import {AUTH_SERVER_URL} from '../../constants';
+import http from '../../http';
+import '../../css/login.css';
+
+export default function InstructorLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    
     function handleLogin() {
-        const student = {
+        const instructor = {
             email: email,
             password: password
         };
-        http.post('http://localhost:4000/login', student)
+        http.post(AUTH_SERVER_URL + '/instructorLogin', instructor)
             .then(res => {
                 if (res.data) {
                     const accessToken = res.data.accessToken;
@@ -20,13 +22,14 @@ export default function Login() {
                     localStorage.setItem("accessToken", accessToken);
                     localStorage.setItem("refreshToken", refreshToken); 
                     console.log('valid password');
-                    navigate('/dashboard');
+                    navigate('/instructorDashboard'); // INSTRUCTOR DASH
                 } else {
                     alert('Invalid password');
                 }
             })
             .catch(err => { console.log(err) });
     };
+    
     return (
         <div className="container">
         <h1>Login</h1>
@@ -53,9 +56,12 @@ export default function Login() {
                         className="password_input"
                     />
                 </div>
-                <button type="button" onClick={handleSignin}>
-                Log In
+                <button type="button" onClick={handleLogin}>
+                    Log In
                 </button>
+                <button type="button" onClick={() => {navigate("/instructorRegister")}}>
+                    Register
+                </button>                
             </form>
         </div>
     );

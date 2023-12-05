@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-const studentSchema = mongoose.Schema({
+const instructorSchema = mongoose.Schema({
     email: String,
     password: String,
     firstName: String,
     lastName: String,
     courses: [mongoose.ObjectId]
 });
-const Student = mongoose.model('Student', studentSchema);
-module.exports = Student;
+const Instructor = mongoose.model('Instructor', instructorSchema);
+module.exports = Instructor;

@@ -1,25 +1,17 @@
 import React from 'react';
-import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/Row';
+import '../../css/footer.css';
 
 const Footer = () => {
   return (
-    <footer
-      style={{
-        width: "100%",
-        position: "relative",
-        bottom: 0,
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <Container>
-        <Row>
-          <Col className='text-center py-3'>Copyright &copy; LMS</Col>
-        </Row>
-      </Container>
-    </footer>
+    <>
+    <div className="content-wrapper">
+        {/* Your main content here */}
+        {/* Ensure that this content wrapper encapsulates all your page content */}
+      </div>
+      <div className="footer">
+        <p className=''>Copyright &copy; LMS</p>
+      </div>
+    </>
   )
 }
 
