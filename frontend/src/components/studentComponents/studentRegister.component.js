@@ -222,19 +222,21 @@ export default function StudentRegister() {
                 </div>
                 <div className="register_password">
                     <p>Password</p>
-                    <i className="fas fa-lock"></i>
-                    <input
-                        type={showPassword ? 'text' : 'password'}
-                        name="password"
-                        placeholder="Password"
-                        className="inputfield"
-                        value={password}
-                        onChange={handleInputChange}
-                    />
-                                    <i
-                        className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
-                        onClick={handleTogglePassword}
-                ></i>
+                    <div className="container-password">
+                        <i className="fas fa-lock"></i>
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            name="password"
+                            placeholder="Password"
+                            className="inputfield"
+                            value={password}
+                            onChange={handleInputChange}
+                        />
+                        <i
+                            className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
+                            onClick={handleTogglePassword}
+                        ></i>
+                    </div>
                 </div>
                 <div className="register_firstname">
                     <p>First Name</p>
