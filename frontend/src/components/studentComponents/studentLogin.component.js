@@ -56,12 +56,14 @@ export default function StudentLogin() {
                         className="password_input"
                     />
                 </div>
-                <button type="button" onClick={handleLogin}>
-                    Log In
-                </button>
-                <button type="button" onClick={() => {navigate("/studentRegister")}}>
-                    Register
-                </button>                
+                <div className="container-button">
+                    <button type="button" onClick={handleLogin}>
+                        Log In
+                    </button>
+                    <button type="button" onClick={() => {navigate("/studentRegister")}}>
+                        Register
+                    </button>
+                </div>              
             </form>
         </div>
     );
