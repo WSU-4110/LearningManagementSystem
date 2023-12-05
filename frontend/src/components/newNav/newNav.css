@@ -1,4 +1,5 @@
 .NavbarItems{
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,9 +22,7 @@
 }
 
 .nav-menu{
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-gap: 5px;
+    display: flex;
     list-style: none;
     align-items: center;
 }

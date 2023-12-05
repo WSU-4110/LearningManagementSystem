@@ -26,6 +26,19 @@ body {
     width: 300px;
   }
 
+  .container-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  .container-button > button {
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    margin: 0 .5em;
+  }
+
   .login_username {
     padding: 20px 0px;	
     position: relative;	
