@@ -26,6 +26,13 @@ body {
     width:auto;
   }
 
+  .intro-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
   .container-password {
     display: flex;
     justify-content: center;
