@@ -40,8 +40,8 @@ export default function StudentDashboard() {
         getCourses();
     }, []);
     return ( 
-        <>
-            <h1>Courses:</h1>
+        <div className="course-container">
+            <h1 id="title">Courses:</h1>
             {courses.map(course => (
             <CoursePeak
                 courseName={course.name}
@@ -49,6 +49,6 @@ export default function StudentDashboard() {
                 key={course._id}
             />
             ))}
-        </>
+        </div>
     );
 };

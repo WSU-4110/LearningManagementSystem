@@ -21,9 +21,28 @@ body {
     background-color: #fff;
     border: 1px solid #ccc;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width:auto;
+  }
+
+  .intro-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .container-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  .buttonContainer > button {
+    flex-basis: calc(50% - 10px);
+    margin: 5px;
+    text-align: center;
   }
 
   .login_username {

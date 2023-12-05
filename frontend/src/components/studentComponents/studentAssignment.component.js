@@ -90,10 +90,10 @@ export default function StudentAssignment() {
     };
 
     return (
-        <div>
+        <div className="container">
             <h2>{assignment && assignment.name}</h2>
-            <p>{assignment && assignment.dueDate}</p>
-            <p>{assignment && assignment.content}</p>
+            <p>Time: {assignment && assignment.dueDate}</p>
+            <p>Assignment: {assignment && assignment.content}</p>
             <input type="file" accept="application/pdf" onChange={handleFileChange} />
             <button className="small-btn" onClick={handleUpload}>Submit</button>
             <p>{submittedFlag}</p>

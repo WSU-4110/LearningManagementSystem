@@ -38,7 +38,7 @@ router.route('/:_id').get(async (req, res) => {
 router.route('/').patch(async (req, res) => {
     try {
         let instructor = await Instructor.findById(req.body.instructor._id);
-        instructor.email = req.body.instructor.name;
+        instructor.email = req.body.instructor.email;
         instructor.password = req.body.instructor.password;
         instructor.firstName = req.body.instructor.firstName;
         instructor.lastName = req.body.instructor.lastName;
@@ -59,5 +59,18 @@ router.route('/').delete(async (req, res) => {
         res.status(400).json({message: 'error: ' + err});
     }
 });
+
+router.route('/bycourse/:courseId').get(async (req, res) => {
+    try {
+        const instructor = await Instructor.findOne({ courses: req.params.courseId });
+        if (!instructor) {
+            return res.status(404).json({message: 'Instructor not found for this course'});
+        }
+        res.status(200).json({email: instructor.email});
+    } catch (err) {
+        res.status(500).json({message: 'error: ' + err});
+    }
+});
+
 
 module.exports = router;

@@ -117,7 +117,7 @@ app.post('/studentLogin', async (req, res) => {
         // compare hashes
         if (await bcrypt.compare(req.body.password, student.password)) {
             // create "payload" object that holds the email and _id of the user (student)
-            const payload = { email: req.body.email, _id: student._id };
+            const payload = { email: req.body.email, _id: student._id, role: 0 };
             // create access token and embed the payload in it
             const accessToken = generateAccessToken(payload);
             // create refresh token with payload embedded in it
@@ -147,7 +147,7 @@ app.post('/instructorLogin', async (req, res) => {
         // compare hashes
         if (await bcrypt.compare(req.body.password, instructor.password)) {
             // create "payload" object that holds the email and _id of the user (instructor)
-            const payload = { email: req.body.email, _id: instructor._id };
+            const payload = { email: req.body.email, _id: instructor._id, role: 1 };
             // create access token and embed the payload in it
             const accessToken = generateAccessToken(payload);
             // create refresh token with payload embedded in it

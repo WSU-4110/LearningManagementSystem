@@ -19,7 +19,11 @@ messaging = email (ask gpt how to do it)
 
 // ADAM
 
-nav bar NOT SEE THRU, and only render when user is logged in
+fix email for profilepage
+conditional linking for navbar
+    fix dashboard linking for student and instructor
+    fix logo link to not go to landingpage
+
 
 // KIDD
 
