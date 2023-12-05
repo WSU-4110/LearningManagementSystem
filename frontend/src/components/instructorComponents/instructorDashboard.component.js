@@ -4,6 +4,7 @@ import {DATA_SERVER_URL} from '../../constants';
 import http from '../../http';
 import "../../"
 import '../../css/instructorDash.css';
+import '../../css/dashboard.css';
 
 
 function CoursePeak(props) {
@@ -41,7 +42,16 @@ export default function StudentDashboard() {
         }
         getCourses();
     }, []);
-    return courses.map(course => {
-        return <CoursePeak courseName={course.name} courseId={course._id} key={course._id}/>;
-    });
+    return (
+      <>
+        <h1>Courses:</h1>
+        {courses.map(course => (
+        <CoursePeak
+            courseName={course.name}
+            courseId={course._id}
+            key={course._id}
+        />
+        ))}
+      </>
+    );
 };
