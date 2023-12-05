@@ -20,6 +20,7 @@ export default function InstructorCourse() {
   const navigate = useNavigate();
   const { course_id } = useParams();
   const [assignments, setAssignments] = useState([]);
+  const [studentEmails, setStudentEmails] = useState([]);
 
   useEffect(() => {
     async function getAssignments() {
@@ -41,15 +42,37 @@ export default function InstructorCourse() {
       }
     }
     getAssignments();
+    fetchStudentEmails();
   }, []);
+
+  const fetchStudentEmails = async () => {
+    try {
+      const response = await http.get(DATA_SERVER_URL + '/students/emails/' + course_id);
+      if (response && response.data) {
+        setStudentEmails(response.data.emails);
+      } else {
+        console.error('Response or response.data is undefined');
+      }
+    } catch (err) {
+      console.error('Error fetching student emails:', err);
+    }
+  };
+
+  const handleEmailStudents = () => {
+    const emailList = studentEmails.join(';');
+    const mailtoLink = `mailto:?bcc=${emailList}`;
+    window.location.href = mailtoLink;
+  };
 
   return (
     <div className="container">
       <p className="create-assignment">Create a new assignment:</p>
       <button onClick={() => { navigate(`/instructorNewAssignment/${course_id}`) }} className="new-assignment-btn">New Assignment</button>
-      {assignments.map(assignment => {
-        return <AssignmentPeak assignmentName={assignment.name} assignmentId={assignment._id} key={assignment._id} />;
-      })}
+      {assignments.map(assignment => (
+        <AssignmentPeak assignmentName={assignment.name} assignmentId={assignment._id} key={assignment._id} />
+      ))}
+  
+      <button onClick={handleEmailStudents} className="email-students-btn">Open Outlook</button>
     </div>
   );
 }
