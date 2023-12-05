@@ -2,9 +2,11 @@ import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {DATA_SERVER_URL} from '../../constants';
 import http from '../../http';
+import '../../css/dashboard.css';
+
 function CoursePeak(props) {
     return (
-        <div>
+        <div className="course">
             <Link to={"/studentCourse/" + props.courseId}>
                 <h2>{props.courseName}</h2>
             </Link>
@@ -37,7 +39,16 @@ export default function StudentDashboard() {
         }
         getCourses();
     }, []);
-    return courses.map(course => {
-        return <CoursePeak courseName={course.name} courseId={course._id} key={course._id}/>;
-    });
+    return ( 
+        <div className="course-container">
+            <h1 id="title">Courses:</h1>
+            {courses.map(course => (
+            <CoursePeak
+                courseName={course.name}
+                courseId={course._id}
+                key={course._id}
+            />
+            ))}
+        </div>
+    );
 };

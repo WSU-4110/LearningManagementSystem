@@ -1,29 +1,48 @@
 h3 {
-    background-color: #21aeeb;
+    background-color: rgb(106, 169, 200);
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
     text-align: center;
-  }
+    color: #fff; 
+    font-size: 1.5em;
+    margin-bottom: 20px; 
 
-  div
-  { 
-     overflow: hidden;
-  }
-  ol {
-    list-style: decimal inside;
-    padding-left: 20px;  
-        text-align: left;
-        list-style-type: circle;
+}
 
-  }
-
-  p{
-    background-color:rgb(196, 216, 255);
+  .button {
+    background-color: rgb(106, 169, 200);
+    color: #fff;
+    border: none;
     border-radius: 5px;
-    margin-bottom: 10px;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-  }
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.inputField {
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    background: none;
+    padding: 10px;
+    padding-left: 24px;
+    justify-content: center;
+    align-items: right;
+    text-align: center;
+    width: 75%;
+    transition: .2s;
+    outline: none;
+}

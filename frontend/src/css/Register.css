@@ -41,6 +41,12 @@ button {
     
 }
 
+.container-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .register_firstname {
     
 }

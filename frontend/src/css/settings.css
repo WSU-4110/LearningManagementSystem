@@ -29,6 +29,8 @@ h2 {
 form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 15px;
 }
 
@@ -48,6 +50,10 @@ label {
   height: 50px;
   border-radius: 50%;
   border: 2px solid #ccc;
+}
+
+.color-box {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
 }
 
 /* Checkbox styles */
@@ -70,4 +76,20 @@ button {
 
 button:hover {
   background-color: #2980b9;
+}
+
+button:active {
+  background-color: #6caad3;
+}
+
+.color-btn {
+  margin: 0 0 0 1em;
+}
+
+.color-btn:hover {
+  background-color:#98c7e7; 
+}
+
+.color-btn:active {
+  background-color:#66acdb;
 }

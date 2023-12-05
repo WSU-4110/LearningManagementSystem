@@ -41,7 +41,7 @@ export default function Settings() {
   }, [selectedColor]);
 
   return (
-    <div>
+    <div className="settings-container">
       <h1>Settings</h1>
 
       <h2>Change Website Preferences</h2>
@@ -49,13 +49,14 @@ export default function Settings() {
         <div>
           <label>Website Color</label>
           <input
+            className="color-btn"
             type="color"
             value={selectedColor}
             onChange={(e) => handleColorChange(e.target.value)}
           />
         </div>
 
-        <div style={{ backgroundColor: selectedColor, width: '50px', height: '50px' }}>
+        <div className="color-box" style={{ backgroundColor: selectedColor, width: '50px', height: '50px' }}>
           {/* Display a preview of the selected color */}
         </div>
 
