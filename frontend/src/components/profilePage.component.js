@@ -15,28 +15,37 @@ export default function ProfilePage() {
         async function getStudent() {
             try {
                 let response = await http.get(DATA_SERVER_URL + "/students/" + "_id");
+                // console.log("ProPage OUT IF Original Response: ", response);
                 let student_id = response.data._id;
-                // console.log(response.data.firstName);
-                
-                if (response.data.firstName) {
+                const roleCall = parseInt(localStorage.getItem('roleCall'), 10);
+                console.log(roleCall);
+                if (roleCall === 0) {
                     // console.log("student found");
+                    console.log("ProPage IN IF Student Object:",response);
                     response = await http.get(DATA_SERVER_URL + "/students/" + student_id);
                     setStudent(response.data.student);
                     setNewFirstName(response.data.student.firstName);
                     setNewLastName(response.data.student.lastName);
                     setNewEmail(response.data.student.email);
-                } else {
+                } else if (roleCall === 1){
                     // console.log("instructor found.");
                     response = await http.get(DATA_SERVER_URL + "/instructors/" + "_id");
                     let instructor_id = response.data._id;
                     
                     if (instructor_id) {
-                        setInstructorFlag(true);
                         response = await http.get(DATA_SERVER_URL + "/instructors/" + instructor_id);
-                        setStudent(response.data.instructor);
-                        setNewFirstName(response.data.instructor.firstName);
-                        setNewLastName(response.data.instructor.lastName);
-                        setNewEmail(response.data.instructor.email);
+                        console.log("ProPage Instructor Object:",response);
+                        if (response.data.instructor){
+                            setInstructorFlag(true);
+                            setStudent(response.data.instructor);
+                            setNewFirstName(response.data.instructor.firstName);
+                            setNewLastName(response.data.instructor.lastName);
+                            setNewEmail(response.data.instructor.email);
+                        }
+                        else {
+                            console.log("No instructor found");
+                        }
+
                     } else {
                         console.log("No user found");
                     }
@@ -57,7 +66,7 @@ export default function ProfilePage() {
                 student_obj.firstName = new_first_name;
                 student_obj.lastName = new_last_name;
                 student_obj.email = new_email;
-                console.log(student_obj);
+                console.log("Within Instructor:",student_obj);
 
                 await http.patch(DATA_SERVER_URL + "/students/", {student: student_obj });
                 setUpdateMessage('Profile updated successfully'); // Set the success message

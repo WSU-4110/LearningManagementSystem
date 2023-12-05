@@ -7,6 +7,7 @@ import '../../css/login.css';
 export default function StudentLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [roleCall, setRollCall] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     
@@ -26,6 +27,8 @@ export default function StudentLogin() {
                     const refreshToken = res.data.refreshToken;
                     localStorage.setItem("accessToken", accessToken);
                     localStorage.setItem("refreshToken", refreshToken); 
+                    localStorage.setItem("roleCall", 0);
+                    setRollCall();
                     console.log('valid password');
                     navigate('/studentDashboard');
                 } else {
