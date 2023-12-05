@@ -6,10 +6,24 @@ h3 {
     text-align: center;
   }
 
+  div
+  { 
+     overflow: hidden;
+  }
   ol {
     list-style: decimal inside;
     padding-left: 20px;  
         text-align: left;
         list-style-type: circle;
+
+  }
+
+  p{
+    background-color:rgb(196, 216, 255);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 
   }

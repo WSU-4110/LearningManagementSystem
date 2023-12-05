@@ -17,6 +17,7 @@ body {
   margin:auto;
   padding:0;
   --selected-color: rgb(24, 58, 210) !important; 
+  height: fit-content;
 
 }
 
