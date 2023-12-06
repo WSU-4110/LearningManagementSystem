@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { DATA_SERVER_URL } from '../../constants';
 import http from '../../http';
+import "../../css/course.css";
 
 function AssignmentPeak(props) {
   return (
-    <div>
+    <div className="assignment-item">
       <Link to={"/studentAssignment/" + props.assignmentId}>
         <h2>{props.assignmentName}</h2>
       </Link>
@@ -52,7 +53,7 @@ export default function StudentCourse() {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       {/* Single "Contact" button */}
       <button className="small-btn" onClick={handleContactClick}>
         Contact

@@ -7,6 +7,7 @@ import '../../css/login.css';
 export default function InstructorLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [roleCall, setRollCall] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     
@@ -26,7 +27,9 @@ export default function InstructorLogin() {
                     const accessToken = res.data.accessToken;
                     const refreshToken = res.data.refreshToken;
                     localStorage.setItem("accessToken", accessToken);
-                    localStorage.setItem("refreshToken", refreshToken); 
+                    localStorage.setItem("refreshToken", refreshToken);
+                    localStorage.setItem("roleCall", 1);
+                    setRollCall();
                     console.log('valid password');
                     navigate('/instructorDashboard'); // INSTRUCTOR DASH
                 } else {

@@ -18,7 +18,7 @@
 .navbar-logo{
     color: black;
     font-size: 2rem;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .nav-menu{
