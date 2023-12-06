@@ -1,38 +1,84 @@
 const router = require('express').Router();
-const bcrypt = require('bcrypt');
 let Student = require('../models/student.model');
-router.route('/').get(async (req, res) => {
+
+/* 
+    this is an additional route, for a student to get their id.
+    it only works when tokens are enabled, since the id is pulled out of the token.
+*/
+router.route('/_id').get(async (req, res) => {
     try {
-        let students = await Student.find();
-        res.json(students);
+        res.status(200).json({_id: req.user._id});
     } catch(err) {
-        res.status(400).json('error: ' + err);
+        res.status(400).json({message: 'error ' + err});
     }
 });
-router.route('/getCourses').get(async (req, res) => {
+
+// route for each CRUD operation
+// [C] create a student
+router.route('/').post(async (req, res) => {
     try {
-        const student = await Student.findById(req.user._id);
-        res.json(student.courses);
+        const student = await Student(req.body.student).save();
+        res.status(200).json({message: 'student created', _id: student._id});
     } catch(err) {
-        res.status(400).json('error: ' + err);
+        res.status(400).json({message: 'error: ' + err});
     }
 });
-router.route('/addCourse').post(async (req, res) => {
+
+// [R] get student by id
+router.route('/:_id').get(async (req, res) => {
     try {
-        const student = await Student.findById(req.body.studentId);
-        student.courses.push(req.body.courseId);
-        student.save();
-        res.json('course added to student');
+        let student = await Student.findById(req.params._id);
+        res.status(200).json({message: 'student read', student});
     } catch(err) {
-        res.status(400).json('error: ' + err);
+        res.status(400).json({message: 'error: ' + err});
     }
 });
-router.route('/:id').get(async (req, res) => {
+
+// [U] update a student by id (body should have desired copy of the student)
+router.route('/').patch(async (req, res) => {
     try {
-        let student = await Student.findById(req.params.id);
-        res.json(student);
+        console.log("Received PATCH request", req.body);
+        let student = await Student.findById(req.body.student._id);
+        student.email = req.body.student.email;
+        student.password = req.body.student.password;
+        student.firstName = req.body.student.firstName;
+        student.lastName = req.body.student.lastName;
+        student.courses = req.body.student.courses;
+        await student.save();
+        res.status(200).json({message: 'student updated'});
     } catch(err) {
-        res.status(400).json('error: ' + err);
+        res.status(400).json({message: 'error from route: ' + err});
     }
 });
+router.route('/emails/:courseId').get(async (req, res) => {
+    try {
+        const courseId = req.params.courseId;
+        const course = await Course.findById(courseId);
+
+        if (!course) {
+            return res.status(404).json({ message: 'Course not found' });
+        }
+
+        const students = await Student.find({
+            '_id': { $in: course.students }
+        });
+
+        const emails = students.map(student => student.email);
+
+        res.status(200).json({ emails: emails });
+    } catch(err) {
+        res.status(500).json({ message: 'error: ' + err });
+    }
+});
+
+// [D] delete a student by id
+router.route('/').delete(async (req, res) => {
+    try {
+        await Student.deleteOne({_id: req.body._id});
+        res.status(200).json({message: 'student deleted'});
+    } catch(err) {
+        res.status(400).json({message: 'error: ' + err});
+    }
+});
+
 module.exports = router;

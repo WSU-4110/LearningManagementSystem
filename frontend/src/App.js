@@ -1,45 +1,76 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useEffect } from 'react';
-import http from './http';
-import './css/App.css';
-import Navbar from './components/navbar.component';
-import Dashboard from './components/dashboard.component';
-import Course from './components/course.component';
-import Login from './components/login.component';
-import Assignment from './components/assignment.component';
-import Register from './components/register.component';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+
+// student-specific components
+import StudentDashboard from './components/studentComponents/studentDashboard.component';
+import StudentCourse from './components/studentComponents/studentCourse.component';
+import StudentLogin from './components/studentComponents/studentLogin.component';
+import StudentRegister from './components/studentComponents/studentRegister.component';
+import StudentAssignment from './components/studentComponents/studentAssignment.component';
+
+// instructor-specific components
+import InstructorLogin from './components/instructorComponents/instructorLogin.component';
+import InstructorRegister from './components/instructorComponents/instructorRegister.component';
+import InstructorDashboard from './components/instructorComponents/instructorDashboard.component';
+import InstructorCourse from './components/instructorComponents/instructorCourse.component';
+import InstructorNewAssignment from './components/instructorComponents/instructorNewAssignment.component';
+import InstructorAssignment from './components/instructorComponents/instructorAssignment.component';
+
+// shared components
 import ProfilePage from './components/profilePage.component';
+import Footer from './components/Footer/Footer.component';
+import Settings from './components/settings.component';
+import LandingPage from './screens/LandingPage.component';
+import NewNav from './components/newNav/newNav.component';
+
+
+
+
+//App Function
 export default function App() {
-    useEffect(() => {
-        async function tryRefreshToken() {
-            console.log('mount');
-            try {
-                const newAccessToken = await http.post('http://localhost:4000/token', { token: localStorage.getItem('refreshToken')});
-                if (newAccessToken != null) {
-                    localStorage.setItem('accessToken', newAccessToken.data.accessToken);
-                }
-            } catch(err) {
-                console.log('error' + err);
-            }
-        }
-        tryRefreshToken();
-        return async () => {
-            console.log('cleanup');
-            await http.post('http://localhost:4000/logout', { token: localStorage.getItem('refreshToken')} );
-        };
-    }, []);
     return (
-        <Router>
-            <Navbar />
-            <Routes>
-                <Route path = '/' element={<Dashboard/>} />
-                <Route path = '/course/:id' element={<Course/>} />
-                <Route path = '/login' element={<Login/>} />
-                <Route path = '/register' element={<Register/>} />
-                <Route path = '/dashboard/' element={<Dashboard/>} />
-                <Route path = '/assignment/:id' element={<Assignment/>} />
-                <Route path = '/profilepage' element={<ProfilePage/>} />
-            </Routes>
+       <Router>                
+            <AppContent />
         </Router>
+    );
+}
+
+
+
+//AppContent function for Routes. Allows ability to render conditionally.
+function AppContent() {
+    const location = useLocation();
+
+    // Define an array of paths where you want to hide the NewNav component
+    const pathsToHideNewNav = ['/', '/studentLogin', '/instructorLogin', '/studentRegister', '/instructorRegister'];
+
+    // Check if the current path is in the pathsToHideNewNav array
+    const shouldHideNewNav = pathsToHideNewNav.includes(location.pathname);
+    const color=localStorage.getItem("backgroundColor");
+    document.documentElement.style.setProperty('--selected-color', color); // Update CSS variable value
+    document.body.style.backgroundColor = color; // Change body background color
+    
+    return (
+        <>
+            {!shouldHideNewNav && <NewNav />}
+            <Routes>
+                <Route path = '/studentLogin' element={<StudentLogin/>} />
+                <Route path = '/studentRegister' element={<StudentRegister/>} />
+                <Route path = '/studentDashboard' element={<StudentDashboard/>} />
+                <Route path = '/studentCourse/:course_id' element={<StudentCourse/>} />
+                <Route path = '/studentAssignment/:assignment_id' element={<StudentAssignment/>} />
+
+                <Route path = '/instructorCourse/:course_id' element={<InstructorCourse/>} />
+                <Route path = '/instructorRegister' element={<InstructorRegister/>} />
+                <Route path = '/instructorDashboard' element={<InstructorDashboard/>} />
+                <Route path = '/instructorNewAssignment/:course_id' element={<InstructorNewAssignment/>} />
+                <Route path = '/instructorAssignment/:assignment_id' element={<InstructorAssignment/>} />
+                <Route path = '/instructorLogin' element={<InstructorLogin/>} />
+
+                <Route path = '/' element={<LandingPage/>} />
+                <Route path = '/profilepage' element={<ProfilePage/>} />
+                <Route path = '/settings' element={<Settings/>} />
+            </Routes>
+            <Footer />
+        </>
     );
 }

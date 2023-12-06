@@ -1,0 +1,95 @@
+
+/* settings.css */
+
+/* Container styles */
+.settings-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+/* Headings */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+/* Color picker and preview */
+.color-picker-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.color-picker-preview {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+
+.color-box {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
+}
+
+/* Checkbox styles */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Button styles */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button:active {
+  background-color: #6caad3;
+}
+
+.color-btn {
+  margin: 0 0 0 1em;
+}
+
+.color-btn:hover {
+  background-color:#98c7e7; 
+}
+
+.color-btn:active {
+  background-color:#66acdb;
+}

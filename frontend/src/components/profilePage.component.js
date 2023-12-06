@@ -1,91 +1,131 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../css/profilePage.css';
-import { Link } from 'react-router-dom';
 import http from '../http';
-//let Student = require('..../models/student.model');
-
+import { DATA_SERVER_URL } from "../constants";
 
 export default function ProfilePage() {
+    const [student, setStudent] = useState(null);
+    const [new_first_name, setNewFirstName] = useState('');
+    const [new_last_name, setNewLastName] = useState('');
+    const [new_email, setNewEmail] = useState('');
+    const [updateMessage, setUpdateMessage] = useState('');
+    const [instructorFlag, setInstructorFlag] = useState(false);
 
-    const [list, setList] = useState([])
+    useEffect(() => {
+        async function getStudent() {
+            try {
+                let response = await http.get(DATA_SERVER_URL + "/students/" + "_id");
+                // console.log("ProPage OUT IF Original Response: ", response);
+                let student_id = response.data._id;
+                const roleCall = parseInt(localStorage.getItem('roleCall'), 10);
+                console.log(roleCall);
+                if (roleCall === 0) {
+                    // console.log("student found");
+                    console.log("ProPage IN IF Student Object:",response);
+                    response = await http.get(DATA_SERVER_URL + "/students/" + student_id);
+                    setStudent(response.data.student);
+                    setNewFirstName(response.data.student.firstName);
+                    setNewLastName(response.data.student.lastName);
+                    setNewEmail(response.data.student.email);
+                } else if (roleCall === 1){
+                    // console.log("instructor found.");
+                    response = await http.get(DATA_SERVER_URL + "/instructors/" + "_id");
+                    let instructor_id = response.data._id;
+                    
+                    if (instructor_id) {
+                        response = await http.get(DATA_SERVER_URL + "/instructors/" + instructor_id);
+                        console.log("ProPage Instructor Object:",response);
+                        if (response.data.instructor){
+                            setInstructorFlag(true);
+                            setStudent(response.data.instructor);
+                            setNewFirstName(response.data.instructor.firstName);
+                            setNewLastName(response.data.instructor.lastName);
+                            setNewEmail(response.data.instructor.email);
+                        }
+                        else {
+                            console.log("No instructor found");
+                        }
 
-    useEffect(()=> {  
-        // here we get the data by requesting data from this link
-        // to our nodejs server
-        http.get('http://localhost:5050/students/')
-        .then((res)=> setList(res.data));
+                    } else {
+                        console.log("No user found");
+                    }
+                }
+            } catch (error) {
+                console.log("Error fetching data", error);
+            }
+        }
+        
+        getStudent();
     }, []);
 
-    let firstNames = list.map((Student)=>{
-        return (
-            <li key={Student.firstName}>{Student.firstName}</li>
-        )
+    async function updateStudent() {
+        try {
+            let response = await http.get(DATA_SERVER_URL + "/students/" + student._id);
+            let student_obj = response.data.student;
+            if (student_obj){
+                student_obj.firstName = new_first_name;
+                student_obj.lastName = new_last_name;
+                student_obj.email = new_email;
+                console.log("Within Instructor:",student_obj);
 
-    });
+                await http.patch(DATA_SERVER_URL + "/students/", {student: student_obj });
+                setUpdateMessage('Profile updated successfully'); // Set the success message
+                setTimeout(() => setUpdateMessage(''), 3000);
+            } else if (instructorFlag) {
+                let response = await http.get(DATA_SERVER_URL + "/instructors/" + student._id);
+                let student_obj = response.data.instructor;
+                student_obj.firstName = new_first_name;
+                student_obj.lastName = new_last_name;
+                student_obj.email = new_email;
+                console.log(student_obj);
 
-    let lastNames = list.map((Student)=>{
-        return (
-            <li key={Student.lastName}>{Student.lastName}</li>
-        )
+                await http.patch(DATA_SERVER_URL + "/instructors/", {instructor: student_obj });
+                setUpdateMessage('Profile updated successfully'); // Set the success message
+                setTimeout(() => setUpdateMessage(''), 3000);
+            }
 
-    });
-    /*constructor(props) {
-        super(props);
 
-        this.onChangeFirstName = this.onChangeFirstName.bind(this);
-        this.onChangeLastName = this.onChangeLastName.bind(this);
-        this.onChangeEmail = this.onChangeEmail.bind(this);
-
-        this.state = {
-            firstName: '',
-            lastName: '',
-            email: '',
-        };
+            //window.location.reload();
+        } catch (error) {
+            console.error("Error updating user", error);
+        }
     }
 
-
-    onChangeFirstName(e) {
-        this.setState({
-            firstname: e.target.value
-        });
-    }
-
-    onChangeLastName(e) {
-        this.setState({
-            lastname: e.target.value
-        });
-    }
-
-    onChangeEmail(e) {
-        this.setState({
-            email: e.target.value
-        });
-    }*/
-
-    /*onSubmit(e) {
-        e.preventDefault(); // prevent usual html form behavior
-
-        const student = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email,
-        };
-
-        console.log(student)
-        // this is where data gets submitted to db
-        axios.post('http://localhost:3000/profilePage/update/'+this.props.match.params.id, student)
-            .then(res => console.log(res.data));
-
-        window.location = "/" // take user back to homepage
-    }*/
-    
-
-    return(
-        <div>
+    return (
+        <div className="container">
             <h3>User Profile</h3>
-            <ol>
-                {firstNames}
-            </ol>
+            <label>
+                First Name:
+                <input
+                    className="inputField"
+                    type="inputField"
+                    name="firstName"
+                    value={new_first_name}
+                    onChange={(e) => setNewFirstName(e.target.value)}
+                />
+            </label>
+            <label>
+                Last Name:
+                <input
+                    className="inputField"
+                    type="inputField"
+                    name="lastName"
+                    value={new_last_name}
+                    onChange={(e) => setNewLastName(e.target.value)}
+                />
+            </label>
+            <label>
+                Email:
+                <input
+                    className="inputField"
+                    type="inputField"
+                    name="email"
+                    value={new_email}
+                    onChange={(e) => setNewEmail(e.target.value)}
+                />
+            </label>
+            <button className='button' onClick={updateStudent}>Update Profile</button>
+            {updateMessage && <p>{updateMessage}</p>}
         </div>
     );
 }

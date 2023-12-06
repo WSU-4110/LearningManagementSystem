@@ -1,0 +1,22 @@
+/* CSS for CoursePeak component */
+.CoursePeakContainer {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #f9f9f9;
+}
+
+.CoursePeakContainer h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.CoursePeakContainer a {
+  text-decoration: none;
+  color: #333;
+}
+
+.CoursePeakContainer a:hover {
+  color: #555;
+}

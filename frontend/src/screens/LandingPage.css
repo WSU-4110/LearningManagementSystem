@@ -1,0 +1,82 @@
+/* html, body, #root {
+    height: 100%;    
+    align-items: center;
+    justify-content: center;
+} */
+
+.container {
+    min-height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.subtitle {
+    font-size: 25px;
+    padding-top: 10px;
+}
+
+.intro-text {
+    width: 100%;
+    text-align: center;
+}
+
+.buttonContainer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.landingButton {
+    width: 150px;
+    height: 55px;
+    text-align: wrap;
+}
+
+/* .landing-logo{
+    size: 1000%;
+} */
+
+@media only screen and (min-width:1200px){
+    .container {
+        min-height: 25vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .buttonContainer{
+        padding: 0;
+    }
+    .title{
+        padding: 0;
+    }
+
+    /* .landing-logo{
+        width: 500px;
+    } */
+}
+
+@media only screen and (max-width:768px){
+    /* .container {
+        min-height: 25vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    } */
+
+    .landingButton{
+        width: 150px;
+        height: 50px;
+    }
+    .title{
+        font-size: 45px;
+    }
+    /*.landing-logo{
+        width: 500px;
+    }*/
+}

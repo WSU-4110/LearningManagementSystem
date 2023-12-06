@@ -1,0 +1,125 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40em;
+    margin: 0;
+    background-size: cover;
+    padding-top: 10em; 
+    padding-bottom: 5em; 
+
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width:auto;
+  }
+
+  .intro-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .container-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  .buttonContainer > button {
+    flex-basis: calc(50% - 10px);
+    margin: 5px;
+    text-align: center;
+  }
+
+  .login_username {
+    padding: 20px 0px;	
+    position: relative;	
+  }
+
+  .login_input {
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    background: none;
+    padding: 10px;
+    padding-left: 24px;
+
+    width: 75%;
+    transition: .2s;
+    outline: none;
+  }
+  
+  .login_input::placeholder {
+    opacity: 0.5
+  }
+
+  .login_password {
+    margin-bottom: 2em;
+  }
+
+  .password_input {
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    background: none;
+    padding: 10px;
+    padding-left: 24px;
+
+    width: 75%;
+    transition: .2s;
+    outline: none;
+  }
+  
+  .password_input::placeholder {
+    opacity: 0.5
+  }
+
+
+  h1 {
+    text-align: center;
+    color: #000000;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin: 5px 0;
+    color: #000000;
+  }
+  
+  input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
