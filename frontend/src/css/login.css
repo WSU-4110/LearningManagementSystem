@@ -26,17 +26,23 @@ body {
     width:auto;
   }
 
+  .intro-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
   .container-password {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-  .container-button > button {
-    width: 100px;
-    height: 40px;
+  .buttonContainer > button {
+    flex-basis: calc(50% - 10px);
+    margin: 5px;
     text-align: center;
-    margin: 0 .5em;
   }
 
   .login_username {
