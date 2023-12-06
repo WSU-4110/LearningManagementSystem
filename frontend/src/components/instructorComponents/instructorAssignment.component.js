@@ -11,10 +11,13 @@ function SubmissionPeak(props) {
             <a href={"http://localhost:5050/" + props.filePath} target="_blank" rel="noopener noreferrer">
                 Open file
             </a>
-            <p> comment: </p>
-            <input type="text"></input>
-            <p> grade: </p>
-            <input type="text"></input>
+            <div>
+                <p> comment: </p>
+                <input type="text"></input>
+                <p> grade: </p>
+                <input type="text"></input>
+                <button>submit</button>
+            </div>
         </div>
     );
 }
@@ -66,6 +69,7 @@ export default function InstructorAssignment() {
             <h2>{assignment && assignment.name}</h2>
             <p>{assignment && assignment.dueDate}</p>
             <p>{assignment && assignment.content}</p>
+            <p>max points: {assignment && assignment.max_points}</p>
 
             <h1>Submissions:</h1>
             {submissions.map(sub => (

@@ -94,6 +94,7 @@ export default function StudentAssignment() {
             <h2>{assignment && assignment.name}</h2>
             <p>Time: {assignment && assignment.dueDate}</p>
             <p>Assignment: {assignment && assignment.content}</p>
+            <p>max points: {assignment && assignment.max_points}</p>
             <input type="file" accept="application/pdf" onChange={handleFileChange} />
             <button className="small-btn" onClick={handleUpload}>Submit</button>
             <p>{submittedFlag}</p>
