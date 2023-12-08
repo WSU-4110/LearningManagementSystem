@@ -37,7 +37,7 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#sprint-plans">Sprint Plans</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#authors">Authors</a></li>
@@ -67,12 +67,12 @@ The users will be able to register or login before they are able to view their d
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-<!-- ROADMAP -->
-## Roadmap
+<!-- Sprint Plans -->
+## Sprint Plans
 
-* [Sprint 1](https://github.com/WSU-4110/LearningManagementSystem/wiki)
-* [Sprint 2](https://github.com/WSU-4110/LearningManagementSystem/wiki)
-* [Sprint 3](https://github.com/WSU-4110/LearningManagementSystem/wiki)
+* [Sprint 1 Plan](https://github.com/WSU-4110/LearningManagementSystem/wiki/Sprint-1-Plan)
+* [Sprint 2 Plan](https://github.com/WSU-4110/LearningManagementSystem/wiki/Sprint-2-Plan)
+* [Sprint 3 Plan](https://github.com/WSU-4110/LearningManagementSystem/wiki/Sprint-3-Plan)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
