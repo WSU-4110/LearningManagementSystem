@@ -30,4 +30,4 @@ jobs:
     - run: npm run build --if-present
     - name: Run npm test in a specific directory
       run: npm test
-      working-directory: path/to/your/directory
+      working-directory: frontend/
