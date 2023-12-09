@@ -38,10 +38,3 @@ course(home) {
 }
 
 
-
-
-
-
-
-features that will never be implemented: 
-student-student messaging
