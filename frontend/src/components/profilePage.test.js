@@ -43,3 +43,6 @@ describe('ProfilePage Component', () => {
     expect(screen.getByLabelText(/Email/i)).toBeInTheDocument();
   });
 });
+
+
+//Added comment for .yml test
