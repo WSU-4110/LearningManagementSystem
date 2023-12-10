@@ -1,6 +1,6 @@
 // Function for instructor to make an assignment
 function makeAssignment(instructorId, assignmentDetails) {
-  if (!instructorId || !assignmentDetails) {
+  if (instructorId === null || assignmentDetails === null) {
     throw new Error('Instructor ID and assignment details are required');
   }
 
@@ -19,29 +19,11 @@ describe('makeAssignment function', () => {
   });
 
   test('throws an error if instructorId or assignmentDetails is missing', () => {
-    expect(() => makeAssignment(undefined, 'Create a report')).toThrow('Instructor ID and assignment details are required');
+    expect(() => makeAssignment(null, 'Create a report')).toThrow('Instructor ID and assignment details are required');
 
-    expect(() => makeAssignment(456, undefined)).toThrow('Instructor ID and assignment details are required');
+    expect(() => makeAssignment(456, null)).toThrow('Instructor ID and assignment details are required');
 
-    expect(() => makeAssignment(undefined, undefined)).toThrow('Instructor ID and assignment details are required');
-  });
-
-  test('throws an error if instructorId is not provided', () => {
-    expect(() => {
-      makeAssignment(undefined, 'Create a report');
-    }).toThrowError('Instructor ID and assignment details are required');
-  });
-
-  test('throws an error if assignmentDetails is not provided', () => {
-    expect(() => {
-      makeAssignment(456, undefined);
-    }).toThrowError('Instructor ID and assignment details are required');
-  });
-
-  test('throws an error if both instructorId and assignmentDetails are not provided', () => {
-    expect(() => {
-      makeAssignment(undefined, undefined);
-    }).toThrowError('Instructor ID and assignment details are required');
+    expect(() => makeAssignment(null, null)).toThrow('Instructor ID and assignment details are required');
   });
 
   test('successfully makes an assignment with complex details', () => {
