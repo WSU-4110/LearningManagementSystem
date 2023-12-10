@@ -98,5 +98,4 @@ describe('RegisterCourse component', () => {
     });
   });
 
-  // Add more tests for edge cases and different scenarios
 });
