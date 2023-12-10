@@ -1,25 +1,25 @@
+import React from 'react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+
 function RegisterCourse({ onRegister }) {
   const [courseName, setCourseName] = React.useState('');
   const [registeredCourses, setRegisteredCourses] = React.useState([]);
   const [error, setError] = React.useState(null);
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     if (courseName.trim() === '') {
       setError('Course name is required');
       return;
     }
 
-    // Simulating an API call to register for a course
-    // In a real application, this would be an HTTP request
-    onRegister(courseName)
-      .then(() => {
-        setRegisteredCourses([...registeredCourses, courseName]);
-        setCourseName('');
-        setError(null);
-      })
-      .catch((err) => {
-        setError('Failed to register for the course');
-      });
+    try {
+      await onRegister(courseName);
+      setRegisteredCourses([...registeredCourses, courseName]);
+      setCourseName('');
+      setError(null);
+    } catch (err) {
+      setError('Failed to register for the course');
+    }
   };
 
   return (
@@ -47,7 +47,6 @@ function RegisterCourse({ onRegister }) {
   );
 }
 
-// Jest tests for RegisterCourse component
 describe('RegisterCourse component', () => {
   test('registers a course successfully', async () => {
     const mockRegister = jest.fn().mockResolvedValueOnce();
