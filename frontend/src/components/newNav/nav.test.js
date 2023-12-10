@@ -1,10 +1,9 @@
-// Function to generate a navigation bar
-function generateNavBar() {
-  const navItems = ['Courses', 'Assignments', 'Grades', 'Profile', 'Settings'];
-  return navItems;
+// Modified function to generate a navigation bar with optional items
+function generateNavBar(specificItems = ['Courses', 'Assignments', 'Grades', 'Profile', 'Settings']) {
+  return specificItems;
 }
 
-// Tests for the generateNavBar function
+// Modified tests for the generateNavBar function
 describe('generateNavBar function', () => {
   test('successfully generates navigation bar with default items', () => {
     const result = generateNavBar();
