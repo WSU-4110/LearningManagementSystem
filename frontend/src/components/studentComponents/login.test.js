@@ -106,4 +106,25 @@ async function login(username, password) {
   
       expect(() => turnInAssignment(undefined, undefined)).toThrow('Student ID and Assignment ID are required');
     });
+
+      describe('turnInAssignment function error handling', () => {
+  test('throws an error if studentId is not provided', () => {
+    expect(() => {
+      turnInAssignment(undefined, 'xyz123');
+    }).toThrowError('Student ID and Assignment ID are required');
+  });
+
+  test('throws an error if assignmentId is not provided', () => {
+    expect(() => {
+      turnInAssignment(123, undefined);
+    }).toThrowError('Student ID and Assignment ID are required');
+  });
+
+  test('throws an error if both studentId and assignmentId are not provided', () => {
+    expect(() => {
+      turnInAssignment(undefined, undefined);
+    }).toThrowError('Student ID and Assignment ID are required');
+  });
+});
+
   });
